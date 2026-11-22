@@ -39,3 +39,6 @@ test-results/
 
 # Browser order monitor
 !order-dashboard.cjs
+
+# Prevent accidental nested npm project
+/samsung-cart-check/

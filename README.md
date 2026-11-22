@@ -42,7 +42,7 @@ Chạy từng script lần lượt; đóng Chrome của script trước rồi m�
 - Cài Playwright nếu chưa có:
 
 ```powershell
-npm install --prefix samsung-cart-check --no-audit --no-fund playwright
+npm ci
 ```
 
 Script dùng Google Chrome đã cài trên máy, không cần tải Chromium riêng.
@@ -50,7 +50,7 @@ Script dùng Google Chrome đã cài trên máy, không cần tải Chromium ri�
 ## 2. Thêm sản phẩm vào giỏ
 
 ```powershell
-node samsung-cart-check/addtocart.cjs
+node ./addtocart.cjs
 ```
 
 Làm theo câu hỏi tại terminal:
@@ -71,7 +71,7 @@ Khi hoàn tất, nhấn Enter tại terminal để đóng Chrome và lưu phiên
 ## 3. Chạy checkout đến bước 3
 
 ```powershell
-node samsung-cart-check/console-order.cjs
+node ./console-order.cjs
 ```
 
 Chọn một trong ba chế độ:
@@ -117,7 +117,7 @@ Script không tự tích điều khoản, không tự chọn lưu thẻ và khô
 Muốn đến bước 3 nhưng tự nhập thẻ:
 
 ```powershell
-node samsung-cart-check/console-order.cjs --no-card
+node ./console-order.cjs --no-card
 ```
 
 ## 4. Thông tin test hiện tại
