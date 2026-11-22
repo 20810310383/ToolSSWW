@@ -3,6 +3,7 @@ const path = require('node:path');
 const readline = require('node:readline/promises');
 const { randomInt } = require('node:crypto');
 const ui = require('./terminal-ui.cjs');
+const { installDashboard } = require('./order-dashboard.cjs');
 const ROOT = 'https://stg2.shop.samsung.com';
 const API = 'https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es';
 const CART = '/users/current/carts/current';
@@ -56,6 +57,7 @@ async function main() {
     if ((await ask('Bắt đầu? y/n [y]:', 'y')).toLowerCase() !== 'y') return;
     const { chromium } = require('playwright');
     context = await chromium.launchPersistentContext(path.join(__dirname, 'checkout-profile'), { channel: 'chrome', headless: false, slowMo: 120, viewport: null });
+    await installDashboard(context, () => ({total: rounds, records}));
     const page = context.pages()[0] || await context.newPage(); page.setDefaultTimeout(30000);
     const step = text => ui.step(text);
     async function api(endpoint, method = 'GET', body) {
@@ -169,8 +171,6 @@ async function main() {
           await confirmation.focus();
         }
         record.status = 'awaiting_manual_order'; save();
-        ui.success('Đến bước 3. Bạn tự kiểm tra tổng tiền, tích điều khoản và đặt hàng trong Chrome.');
-        ui.info('Chờ tối đa 30 phút. Tool không tự tích, lưu thẻ hoặc bấm đặt hàng.');
         await page.waitForURL(url => url.origin === ROOT && url.pathname.startsWith('/es/orderConfirmation'), { timeout: 1800000 });
         const confirmedURL = new URL(page.url());
         const orderCode = confirmedURL.searchParams.get('orderCode') || /orderCode=([^;?&#/]+)/.exec(confirmedURL.pathname)?.[1];

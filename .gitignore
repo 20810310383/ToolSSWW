@@ -36,3 +36,6 @@ test-results/
 
 # Combined workflow
 !checkout-loop.cjs
+
+# Browser order monitor
+!order-dashboard.cjs

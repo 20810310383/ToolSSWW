@@ -1,4 +1,5 @@
 const ui = require('./terminal-ui.cjs');
+const { installDashboard } = require('./order-dashboard.cjs');
 const { chromium } = require('playwright');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -63,6 +64,18 @@ async function askProducts() {
       return data;
     }, { url: API + endpoint + (endpoint.includes('?') ? '&' : '?') + 'lang=es&curr=EUR', method, body });
   }
+  const dashboardRecords=[];
+  let checkingConfirmation=false;
+  await installDashboard(context,async()=>{
+    const record=dashboardRecords[0];const url=new URL(page.url());
+    if(record && url.origin===ROOT && url.pathname.startsWith('/es/orderConfirmation') && record.status!=='confirmed_cart_empty' && !checkingConfirmation){
+      const code=url.searchParams.get('orderCode') || /orderCode=([^;?&#/]+)/.exec(url.pathname)?.[1];
+      if(code){checkingConfirmation=true;record.orderCode=decodeURIComponent(code);record.status='confirmation_seen';
+        try{const cart=await api('/users/current/carts/current?fields=FULL');if(Array.isArray(cart?.entries)&&!cart.entries.length)record.status='confirmed_cart_empty';}catch{}finally{checkingConfirmation=false;}
+      }
+    }
+    return {total:1,records:dashboardRecords};
+  });
   try {
     step('1. Mo trang lay cookie');
     await page.goto('https://stg3.shop.samsung.com/getcookie.html', { waitUntil: 'domcontentloaded' });
@@ -94,6 +107,7 @@ async function askProducts() {
       await page.reload({ waitUntil: 'domcontentloaded' });
     }
     if (!cart.entries?.length) throw new Error('Gio dang trong. Chay lai va nhap SKU o menu 1 hoac 2.');
+    dashboardRecords.push({round:1,status:'running',items:(cart.entries||[]).map(e=>({code:e.product?.code,quantity:e.quantity}))});
     step('3. Bam Tramitar pedido');
     await page.getByRole('button', { name: /Tramitar pedido/i }).first().click();
     await page.waitForURL(/\/es\/(guestlogin\/checkout|checkout\/one)/);
@@ -169,6 +183,7 @@ async function askProducts() {
       await holder.focus();
     }
     // Chi cuon, danh dau va focus; khong click/check hay thay doi checked.
+    if(dashboardRecords[0])dashboardRecords[0].status='awaiting_manual_order';
     const confirmation = page.locator('#es-adyenCcPaymentModeOptin-input');
     await page.locator('#es-adyenCcPaymentModeOptin-input').click();
     await page.locator('button[data-an-la="payment:pay now:credit card"]').click();
@@ -184,8 +199,9 @@ async function askProducts() {
       ui.info('Đã focus ô xác nhận và đánh dấu màu vàng; bạn tự tích khi sẵn sàng.');
     }
     step(process.argv.includes('--no-card') ? 'SAN SANG BUOC 3: ban tu chon the va xac nhan.' : 'SAN SANG: da dien the test ...1142. Ban tu kiem tra tong tien, tich dieu khoan va bam Realizar pedido.');
-    ui.info('Bạn tự kiểm tra tổng tiền, tích điều khoản và đặt hàng trong Chrome.'); ui.info('Đóng Chrome này để kết thúc script.');
+    ui.info('Đóng Chrome này để kết thúc script.');
   } catch (error) {
+    if(dashboardRecords[0]){dashboardRecords[0].status='stopped';dashboardRecords[0].error=error.message;}
     ui.error('DỪNG: ' + error.message);
     ui.info('Giữ Chrome mở để kiểm tra. Đóng Chrome này để kết thúc.');
   }

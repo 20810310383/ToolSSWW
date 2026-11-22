@@ -144,3 +144,11 @@ Kiểm tra VPN và thử mở hai link:
 
 
 RB33J3515S9/EF,RB38C600CS9/EF,RB34C600CSA/EF
+
+## 10. Bảng nổi theo dõi đơn trên Chrome
+
+`console-order.cjs` và `checkout-loop.cjs` có bảng nổi ở góc trái dưới trang Samsung. Bảng hiển thị số đơn hoàn thành trong phiên chạy, tiến trình lượt, mã đơn, SKU và quantity. Màu xanh biểu thị hoàn thành, vàng là chờ xác nhận, đỏ là đã dừng. Dùng nút `− / +` để thu gọn hoặc mở rộng.
+
+Chỉ đếm hoàn thành khi đã thấy trang xác nhận có mã đơn và đọc lại giỏ trống; đây không phải xác minh thanh toán backend. Dữ liệu bảng được khởi tạo lại khi chạy script mới. Bảng tự hiện lại sau chuyển trang và không xuất hiện trên trang Samsung Account.
+
+Khi push Git, giữ thêm file `order-dashboard.cjs` cùng các script. Helper này đã được cho phép trong `.gitignore`.
