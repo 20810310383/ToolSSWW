@@ -4,3 +4,7 @@ node_modules/
 # Browser profile: cookies, login sessions, local storage
 checkout-profile/
 *-profile/
+
+# Read-only order history viewer
+!orders-popup.cjs
+!orders-viewer.cjs

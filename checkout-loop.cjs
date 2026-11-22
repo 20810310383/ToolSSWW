@@ -16,7 +16,19 @@ if (process.argv.includes('--help')) {
 async function main() {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   let context;
-  const ask = async (text, fallback = '') => (await rl.question(ui.question(text))).trim() || fallback;
+  let activeQuestion;
+  rl.on('close', () => activeQuestion?.abort());
+  const ask = async (text, fallback = '') => {
+    if (rl.closed || process.stdin.destroyed) throw new Error('Terminal da dong dau vao. Chay truc tiep: node .\\checkout-loop.cjs');
+    const controller = new AbortController();
+    activeQuestion = controller;
+    try {
+      return (await rl.question(ui.question(text), {signal:controller.signal})).trim() || fallback;
+    } catch (error) {
+      if (controller.signal.aborted || rl.closed) throw new Error('Terminal ngat dau vao. Hay chay truc tiep trong PowerShell/Terminal, khong pipe input.');
+      throw error;
+    } finally { if (activeQuestion === controller) activeQuestion = undefined; }
+  };
   async function number(text, fallback, low = 1, high = 10000) {
     while (true) {
       const raw = await ask(text, String(fallback)); const n = Number(raw);
@@ -53,8 +65,15 @@ async function main() {
     plan.slice(0, 10).forEach((items, i) => ui.info('Lượt ' + (i + 1) + ': ' + items.map(p => p.code + ' × ' + p.quantity).join(' | ')));
     if (rounds > 10) ui.info('Còn ' + (rounds - 10) + ' lượt.');
     ui.info('Sau bước 3 bạn tự tích điều khoản và đặt hàng; tool chờ trang xác nhận và giỏ trống để tiếp tục.');
-    if (process.argv.includes('--dry-run')) return;
-    if ((await ask('Bắt đầu? y/n [y]:', 'y')).toLowerCase() !== 'y') return;
+    if (process.argv.includes('--dry-run')) {
+      ui.success('DRY-RUN hoàn tất: chỉ xem kế hoạch, không mở Chrome.');
+      ui.info('Chạy thật: node .\\checkout-loop.cjs (bỏ --dry-run).');
+      return;
+    }
+    let answer;
+    do { answer = (await ask('Bắt đầu? y/n [y]:', 'y')).toLowerCase(); } while (!['y','n'].includes(answer));
+    if (answer === 'n') { ui.warn('Đã hủy theo lựa chọn n; không mở Chrome.'); return; }
+    ui.step('Đang khởi động Chrome…');
     const { chromium } = require('playwright');
     context = await chromium.launchPersistentContext(path.join(__dirname, 'checkout-profile'), { channel: 'chrome', headless: false, slowMo: 120, viewport: null });
     await installDashboard(context, () => ({total: rounds, records}));

@@ -28,6 +28,9 @@ node .\checkout-loop.cjs
 
 # Xem trước kế hoạch lặp SKU/quantity, không mở Chrome
 node .\checkout-loop.cjs --dry-run
+
+# check lịch sử đơn
+node .\orders-viewer.cjs
 ```
 
 Chạy từng script lần lượt; đóng Chrome của script trước rồi mới chạy script tiếp theo.
@@ -152,3 +155,44 @@ RB33J3515S9/EF,RB38C600CS9/EF,RB34C600CSA/EF
 Chỉ đếm hoàn thành khi đã thấy trang xác nhận có mã đơn và đọc lại giỏ trống; đây không phải xác minh thanh toán backend. Dữ liệu bảng được khởi tạo lại khi chạy script mới. Bảng tự hiện lại sau chuyển trang và không xuất hiện trên trang Samsung Account.
 
 Khi push Git, giữ thêm file `order-dashboard.cjs` cùng các script. Helper này đã được cho phép trong `.gitignore`.
+
+## 11. Lịch sử đơn hàng: popup tìm kiếm và chi tiết
+
+```powershell
+node .\orders-viewer.cjs
+```
+
+Tool mở `https://stg2.shop.samsung.com/es/mypage/orders` bằng profile chung. Nếu chưa đăng nhập, đăng nhập trong Chrome rồi quay lại trang lịch sử và bấm **Làm mới**.
+
+Nút **Lịch sử đơn** nằm ở góc phải dưới, có cả khi chạy `console-order.cjs` và `checkout-loop.cjs`.
+
+- Tìm mã đơn, tên sản phẩm, SKU đã tải hoặc trạng thái.
+- Bấm đơn để mở rộng/thu gọn. Chi tiết gồm đầy đủ SKU, quantity, giá, tổng tiền, trạng thái thanh toán và địa chỉ giao.
+- **Trang tiếp** tải thêm một trang; **Tải mọi trang** tải toàn bộ danh sách.
+- API danh sách chỉ có sản phẩm đại diện. Bấm **Tải đầy đủ SKU** để đọc mọi chi tiết (tối đa ba request đồng thời) trước khi tìm tất cả SKU trong lịch sử.
+- **Làm mới** xóa cache popup và tải trang đầu. Popup không ghi dữ liệu ra file.
+- Escape, nút × hoặc nền ngoài popup để đóng.
+
+API đã kiểm tra HTTP 200:
+
+```text
+GET /tokocommercewebservices/v2/es/users/current/orders?currentPage=0&lang=es&curr=EUR
+GET /tokocommercewebservices/v2/es/users/current/orders/{orderCode}?lang=es&curr=EUR
+```
+
+Danh sách dùng `searchPageData.results` và `searchPageData.pagination`. Chi tiết có `entries`, `totalPrice`, `statusDisplay`, `isFullAmountPaid`. `waiting-approval` là chờ duyệt, không đồng nghĩa đã thanh toán.
+
+Popup chỉ đọc; không có thao tác hủy/sửa/đặt đơn. Đóng các Chrome automation khác trước khi chạy viewer để tránh khóa profile. Khi push source, giữ thêm `orders-popup.cjs` và `orders-viewer.cjs`.
+
+### Thanh tiến trình 1–6 trong chi tiết đơn
+
+Mỗi sản phẩm có thanh trạng thái từ `entries[].fulfillmentSteps`:
+
+1. Pago recibido.
+2. Pedido realizado.
+3. Pedido en preparación.
+4. Pedido listo para envío.
+5. En camino.
+6. Entregado.
+
+Mốc được API đánh dấu `active` sẽ tô xanh. Tiến trình được hiển thị riêng từng SKU để không gộp sai các sản phẩm đang giao khác nhau. Nếu API chưa trả tiến trình, popup báo chưa có dữ liệu. Nhãn “Pago recibido” phản ánh mốc của website; kiểm tra riêng `isFullAmountPaid` và trạng thái đơn để xác định thanh toán. Với màn hình nhỏ, kéo ngang thanh tiến trình.

@@ -1,5 +1,6 @@
 ﻿// Read-only browser dashboard. Never clicks checkout controls.
 async function installDashboard(context, getState) {
+  await require('./orders-popup.cjs').installOrdersPopup(context);
   await context.exposeBinding('__samsungRunDashboardState', () => getState());
   await context.addInitScript(() => {
     if (window !== window.top || location.origin !== 'https://stg2.shop.samsung.com') return;
