@@ -5,7 +5,7 @@
 Nếu prompt terminal đang là:
 
 ```text
-PS F:\Project_XinXo\WebAppThiTracNghiem2026\samsung-cart-check>
+PS F:\samsung-cart-check>
 ```
 
 Chạy trực tiếp tên file, không thêm `samsung-cart-check/` lần nữa:
