@@ -1,0 +1,169 @@
+﻿<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';script-src 'self';style-src 'self';img-src 'self' data:;connect-src 'none'">
+    <title>Samsung Staging Toolkit — by Khắc Tú</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <aside>
+        <div class="brand"><span class="logo">S</span>
+            <div>STAGING<span>TOOLKIT / WINDOWS</span></div>
+        </div>
+        <div class="signature">by Khắc Tú</div>
+        <div class="side-label">WORKSPACE</div><button class="nav active" data-mode="checkout"><span
+                class="nav-icon">01</span><span>Tự thêm giỏ + checkout<small>Cấu hình và chạy luồng
+                    đơn</small></span></button><button class="nav" data-mode="history"><span
+                class="nav-icon">02</span><span>Lịch sử đơn chi tiết<small>Tìm kiếm · tiến trình ·
+                    SKU</small></span></button>
+        <div class="side-bottom"><span class="dot"></span> Chrome trên máy bạn<p>Hai mục dùng chung phiên đăng nhập.
+                Lịch sử mở ở tab riêng, không ngắt checkout.</p>
+            <div class="version">DESKTOP EDITION · 1.1 · by Khắc Tú</div>
+        </div>
+    </aside>
+    <main>
+        <header>
+            <div>
+                <div class="eyebrow">SAMSUNG / STAGING WORKSPACE</div>
+                <h1 id="heading">Tự thêm giỏ + checkout</h1>
+                <p id="description">Nhập môi trường, SKU và thẻ test trước khi bắt đầu.</p>
+            </div>
+            <div class="header-actions"><span class="status" id="status">● Sẵn sàng</span><button type="button"
+                    id="stop" class="secondary" disabled>■ Dừng Chrome</button></div>
+        </header>
+        <div id="checkout-view" class="view">
+            <form id="form">
+                <section class="card endpoints">
+                    <div class="section-head">
+                        <h2><span>01</span> Môi trường chạy</h2><span class="tag">HTTPS · STAGING</span>
+                    </div><label>ROOT — địa chỉ website<input id="root" type="url" value="https://stg2.shop.samsung.com"
+                            required></label><label>API — Commerce API<input id="api" type="url"
+                            value="https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es"
+                            required></label>
+                </section>
+                <div class="columns">
+                    <section class="card">
+                        <div class="section-head">
+                            <h2><span>02</span> SKU & lượt chạy</h2>
+                        </div><label>Danh sách SKU<textarea id="skus" rows="3"
+                                placeholder="RB33J3515S9/EF, RB34C600CSA/EF" required>RB33J3515S9/EF</textarea></label>
+                        <div class="hint">Một hoặc nhiều mã, cách nhau bằng dấu phẩy.</div>
+                        <div class="grid"><label>Quantity nhỏ nhất<input id="min" type="number" min="1" max="1000"
+                                    value="1" required></label><label>Quantity lớn nhất<input id="max" type="number"
+                                    min="1" max="1000" value="2" required></label></div>
+                        <div class="grid"><label>Cách đổi quantity<select id="quantityMode">
+                                    <option value="fixed">Cố định (quantity nhỏ nhất)</option>
+                                    <option value="ascending">Tăng dần từng tổ hợp</option>
+                                    <option value="alternate">Xen kẽ giữa các SKU</option>
+                                    <option value="random">Ngẫu nhiên</option>
+                                </select></label><label>Số lượt (1 = đơn lẻ)<input id="rounds" type="number" min="1"
+                                    max="1000" value="1" required></label></div>
+                        <div class="section-head card-section">
+                            <h2><span>03</span> Thẻ thanh toán test</h2><span class="tag">CHỈ ADYEN TEST</span>
+                        </div><label class="check"><input type="checkbox" id="fillCard" checked> Tự điền thẻ ở bước
+                            3</label>
+                        <div id="card-fields"><label>Số thẻ<input id="card-number" inputmode="numeric"
+                                    autocomplete="off" placeholder="4111 1111 4555 1142" value="4111 1111 4555 1142"
+                                    required></label><label>Tên chủ thẻ<input id="card-holder" autocomplete="off"
+                                    value="Classic" required></label>
+                            <div class="grid"><label>Hạn thẻ (MM/YY)<input id="card-expiry" autocomplete="off"
+                                        placeholder="03/30" value="03/30" required></label><label>CVV / CVC<input
+                                        id="card-cvc" type="password" inputmode="numeric" autocomplete="off"
+                                        maxlength="4" value="737" required></label></div>
+                            <div class="hint">Thẻ chỉ giữ trong phiên chạy, không ghi vào log hoặc lưu cấu hình.</div>
+                        </div>
+                        <div class="note">Chrome mở để chạy luồng. Bạn tự đăng nhập Samsung và xác nhận đặt hàng ở bước
+                            3. Sau đơn xác nhận và giỏ trống, lượt sau mới bắt đầu.</div>
+                        <div class="buttons"><button type="submit" class="primary" id="start">▶ Run — thêm giỏ &
+                                checkout</button></div>
+                    </section>
+                    <section class="card monitor">
+                        <div class="section-head">
+                            <h2>Theo dõi phiên</h2><span class="tag" id="progress">CHƯA CHẠY</span>
+                        </div>
+                        <div class="metrics">
+                            <div><strong id="completed">0</strong><span>ĐƠN XÁC NHẬN</span></div>
+                            <div><strong id="current">—</strong><span>LƯỢT HIỆN TẠI</span></div>
+                        </div>
+                        <div class="run-items" id="items">Chưa có kịch bản đang chạy.</div>
+                        <div class="history-tip"><strong>Xem đơn trong lúc chạy?</strong>
+                            <p>Chuyển sang mục Lịch sử đơn chi tiết. Phiên checkout vẫn tiếp tục ở tab hiện tại.</p>
+                            <button type="button" class="secondary" id="go-history">Mở mục lịch sử ↗</button>
+                        </div>
+                        <h3>Đơn đã xác nhận</h3>
+                        <div class="orders" id="orders">
+                            <div class="empty">Kết quả sẽ xuất hiện tại đây.</div>
+                        </div>
+                    </section>
+                </div>
+            </form>
+        </div>
+        <div id="history-view" class="view" hidden>
+            <form id="history-form">
+                <section class="card history-hero"><span class="tag">READ-ONLY · CHẠY SONG SONG</span>
+                    <h2>Khám phá lịch sử đơn của bạn</h2>
+                    <p>Danh sách, chi tiết từng SKU và tiến trình giao hàng — ngay trong tab Samsung riêng.</p>
+                    <div class="feature-row"><span>⌕ Tìm mã đơn / SKU</span><span>▤ Chi tiết quantity</span><span>⑥ Sáu
+                            mốc tiến trình</span></div>
+                </section>
+                <section class="card endpoints">
+                    <div class="section-head">
+                        <h2>Kết nối lịch sử đơn</h2><span class="tag" id="history-status">CHƯA MỞ TAB</span>
+                    </div><label class="check wide"><input type="checkbox" id="reuse-environment" checked> Dùng ROOT/API
+                        của mục checkout (cùng phiên Chrome)</label><label>ROOT<input id="history-root" type="url"
+                            value="https://stg2.shop.samsung.com" required disabled></label><label>API<input
+                            id="history-api" type="url"
+                            value="https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es" required
+                            disabled></label>
+                    <div class="buttons"><button type="submit" class="primary" id="open-history">↗ Mở tab lịch sử
+                            đơn</button></div>
+                    <div class="hint history-hint">Nếu Chrome đang chạy, tab mới dùng chung đăng nhập; không đóng hoặc
+                        chuyển trang checkout.</div>
+                </section>
+                <section class="card">
+                    <div class="section-head">
+                        <h2>Cách xem trong tab Samsung</h2>
+                    </div>
+                    <ol class="howto">
+                        <li><b>1</b>
+                            <div><strong>Mở mypage/orders</strong>
+                                <p>Chưa đăng nhập? Đăng nhập trên website rồi quay lại trang lịch sử.</p>
+                            </div>
+                        </li>
+                        <li><b>2</b>
+                            <div><strong>Bấm “Lịch sử đơn” ở góc phải dưới</strong>
+                                <p>Chỉ hiện nút, không tự mở popup che trang. Bấm khi bạn cần xem.</p>
+                            </div>
+                        </li>
+                        <li><b>3</b>
+                            <div><strong>Tìm kiếm và mở rộng đơn</strong>
+                                <p>Xem SKU, quantity, giá, trạng thái; tải mọi trang và đầy đủ SKU để tìm toàn lịch sử.
+                                </p>
+                            </div>
+                        </li>
+                    </ol>
+                    <div class="history-steps"><span>1 · Pago recibido</span><span>2 · Pedido realizado</span><span>3 ·
+                            En preparación</span><span>4 · Listo para envío</span><span>5 · En camino</span><span>6 ·
+                            Entregado</span></div>
+                </section>
+            </form>
+        </div>
+        <section class="card logs">
+            <div class="section-head">
+                <h2>Nhật ký hoạt động</h2><button id="clear" type="button" class="text-button">Xóa màn hình</button>
+            </div>
+            <div id="logs" role="log" aria-live="polite">
+                <div class="log muted">Nhập cấu hình rồi bấm Run. Bạn có thể đổi menu bất cứ lúc nào.</div>
+            </div>
+        </section>
+        <footer>by Khắc Tú · Windows desktop · Chrome + VPN · Dùng cho môi trường staging</footer>
+    </main>
+    <script src="renderer.js"></script>
+</body>
+
+</html>

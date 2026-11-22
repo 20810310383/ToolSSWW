@@ -196,3 +196,91 @@ Mỗi sản phẩm có thanh trạng thái từ `entries[].fulfillmentSteps`:
 6. Entregado.
 
 Mốc được API đánh dấu `active` sẽ tô xanh. Tiến trình được hiển thị riêng từng SKU để không gộp sai các sản phẩm đang giao khác nhau. Nếu API chưa trả tiến trình, popup báo chưa có dữ liệu. Nhãn “Pago recibido” phản ánh mốc của website; kiểm tra riêng `isFullAmountPaid` và trạng thái đơn để xác định thanh toán. Với màn hình nhỏ, kéo ngang thanh tiến trình.
+
+## 12. Ứng dụng Windows .exe — bản 1.1, by Khắc Tú
+
+Mở **`dist/1.1.2/Samsung-Staging-Toolkit-1.1.2.exe`**. Máy chạy cần Windows x64, Google Chrome và VPN truy cập staging, không cần Node.js/VS Code. Không chạy chung với bản .exe khác dùng cùng profile.
+
+### Mục 1 — Tự thêm giỏ + checkout
+
+Màn hình này có form riêng; nhập xong mới bấm **Run — thêm giỏ & checkout**:
+
+- **ROOT**: website staging, ví dụ `https://stg2.shop.samsung.com`.
+- **API**: Commerce API, ví dụ `https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es`.
+- Một/nhiều SKU, quantity min/max, cách đổi quantity và số lượt (`1` là đơn lẻ).
+- Số thẻ test, chủ thẻ, hạn `MM/YY` và CVV/CVC. Bỏ chọn Tự điền thẻ nếu muốn tự nhập ở bước 3.
+
+Thẻ được giữ trong bộ nhớ phiên chạy; không lưu vào cấu hình hay log. ROOT/API được ghi nhớ cục bộ. Chế độ cố định dùng quantity min. App chỉ điền thẻ trong iframe Adyen test.
+
+App tự thêm phần quantity còn thiếu vào giỏ, chuyển checkout đến bước 3 và chờ bạn xác nhận điều khoản/đặt hàng trong Chrome. Không tự bấm đặt hàng. Có mã đơn trên trang xác nhận và giỏ trống mới chuyển lượt tiếp theo. App không tự xóa giỏ hoặc retry khi lỗi. Nếu giỏ có SKU ngoài kế hoạch, quantity vượt kế hoạch hay không có giao tận nhà miễn phí, app dừng để bạn kiểm tra.
+
+Địa chỉ test hiện tại được cấu hình trong `desktop/runner.cjs`. Tài khoản Samsung được đăng nhập trực tiếp trên website khi cần.
+
+### Mục 2 — Lịch sử đơn chi tiết, chạy song song
+
+Menu này hiển thị **màn hình riêng**, không có form SKU/thẻ. Có thể mở trong khi checkout đang chạy:
+
+1. Mặc định chọn **Dùng ROOT/API của mục checkout** để dùng đúng môi trường đang chạy.
+2. Bấm **Mở tab lịch sử đơn**. App tạo tab riêng trong cùng Chrome/context nên dùng chung đăng nhập; tab checkout không bị điều hướng.
+3. Trên `mypage/orders`, chỉ hiện nút **Lịch sử đơn** ở góc phải dưới. Bấm nút mới mở popup.
+4. Tìm kiếm theo mã đơn/SKU đã tải/trạng thái; bấm đơn để mở rộng chi tiết và tiến trình 6 mốc. Có tải mọi trang và đầy đủ SKU.
+
+Bấm mở lại sẽ đưa tab lịch sử đang có lên trước, không tạo nhiều tab trùng. Đang dùng Chrome cùng phiên thì ROOT/API phải trùng; muốn đổi môi trường, bấm **Dừng Chrome** trước. Bấm Dừng đóng cả tab checkout và lịch sử; đóng popup chỉ ẩn bảng, không dừng checkout.
+
+Lịch sử chỉ đọc dữ liệu, không có thao tác hủy/sửa đơn. Popup chỉ được chèn trong tab lịch sử; app không thay đổi DOM trang checkout. Trạng thái chờ duyệt không đồng nghĩa đã thanh toán.
+
+### Phiên đăng nhập và build
+
+Profile desktop nằm trong thư mục dữ liệu ứng dụng dưới `%APPDATA%`, thư mục con `chrome-profile`, tách với `checkout-profile` của script terminal. Không chia sẻ profile. File portable không chứa cookie, profile cũ, `.env`, log hay các script thử nghiệm.
+
+Chạy giao diện từ source (terminal trong thư mục repo):
+
+```powershell
+npm ci
+npm run desktop
+```
+
+Build lại:
+
+```powershell
+npm run build:exe
+```
+
+Build dạng thư mục:
+
+```powershell
+npm run build:dir
+```
+
+Output bản 1.1 nằm tại `dist/1.1.0/`. File portable có thể phân phối riêng. Với exe trong `win-unpacked`, phải giữ cả thư mục cùng DLL/resources. `dist/` được ignore trên Git. Bản nội bộ chưa ký số, không tự cập nhật.
+
+Khi push source, giữ thư mục `desktop/`, `orders-popup.cjs`, `package.json` và `package-lock.json`. Gói build chỉ whitelist các file runtime cần thiết.
+
+Đã kiểm tra hai màn hình, nhập thẻ/validation, mở lịch sử khi checkout đang active bằng kiểm thử giả lập và chia sẻ context/tab. Đã kiểm tra mở lịch sử thực tế trong Chrome ở chế độ chỉ đọc. Chưa kiểm thử một đơn thanh toán hoàn chỉnh bằng phiên bản desktop này.
+
+### Build + nén RAR + dọn build cũ (bản 1.1.1)
+
+```powershell
+npm run release:rar
+```
+
+Cần WinRAR có `Rar.exe` ở vị trí cài mặc định. Nếu cài nơi khác, đặt `RAR_PATH` trỏ tới `Rar.exe` trước khi chạy.
+
+Lệnh sẽ build exe portable, nén RAR, kiểm tra toàn vẹn archive bằng `rar t`, sau đó mới xóa các bản phát hành cũ trong `dist/`. Chỉ dọn thư mục phiên bản/`win-unpacked` và file phát hành có tên đúng mẫu; không xóa source, profile hay dữ liệu ngoài `dist`. Nếu Windows khóa bản cũ đang mở, script báo rõ bản chưa xóa được; đóng app cũ rồi chạy lại.
+
+File hiện tại:
+
+```text
+dist/1.1.2/Samsung-Staging-Toolkit-1.1.2.exe
+dist/1.1.2/Samsung-Staging-Toolkit-1.1.2.rar
+```
+
+Bản này tự cuộn/focus checkbox ở bước 3 nhưng không tự tích điều khoản hoặc bấm đặt hàng. Bạn thực hiện hai thao tác cuối trong Chrome.
+
+### ??ng g?i to?n b? ?ng d?ng, kh?ng x?a b?n c?
+
+```powershell
+npm run release:rar
+```
+
+M?i l?n ch?y t?o th? m?c m?i `dist/<version>-<m? ri?ng>/`, kh?ng ghi ?? ho?c x?a b?n c?. RAR g?m `win-unpacked/` ??y ?? EXE, DLL, resources, locales; file EXE portable v? `HUONG-DAN.txt`. Kh?ng ??ng g?i cookie, profile hay log c? nh?n. Script ki?m tra CRC v? danh s?ch file trong RAR tr??c khi b?o ho?n t?t. C?n WinRAR/Rar.exe ho?c c?u h?nh `RAR_PATH`.

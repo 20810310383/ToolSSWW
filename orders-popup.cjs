@@ -1,9 +1,9 @@
-﻿async function installOrdersPopup(context) {
-  await context.addInitScript(ordersPopup);
+﻿async function installOrdersPopup(context, settings = {}) {
+  await context.addInitScript(ordersPopup, settings);
 }
-function ordersPopup() {
-  if (window!==window.top || location.origin!=='https://stg2.shop.samsung.com') return;
-  const API='https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/orders';
+function ordersPopup(settings = {}) {
+  if (window!==window.top || location.origin!==(settings.root || 'https://stg2.shop.samsung.com')) return;
+  const API=(settings.api || 'https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es')+'/users/current/orders';
   let host;
   function mount(){
     if(!document.body||document.getElementById('samsung-orders-popup'))return;
