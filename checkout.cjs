@@ -1,0 +1,6 @@
+const {chromium}=require('playwright');
+(async()=>{const c=await chromium.launchPersistentContext('.tmp/samsung-cart-check/checkout-profile',{channel:'chrome',headless:false});const p=c.pages()[0]||await c.newPage();
+await p.goto('https://stg3.shop.samsung.com/getcookie.html',{waitUntil:'domcontentloaded'});
+await p.goto('https://stg2.shop.samsung.com/es/p/SM-S921BLGDEUB',{waitUntil:'domcontentloaded'}); await p.waitForTimeout(12000); const reject=p.getByRole('button',{name:'Rechazar Opcionales',exact:true});if(await reject.isVisible())await reject.click(); await p.getByRole('button',{name:'Precompra',exact:true}).click();await p.waitForTimeout(5000);await p.goto('https://stg2.shop.samsung.com/es/cart',{waitUntil:'domcontentloaded'});await p.waitForTimeout(10000); console.log('CART_BODY',(await p.locator('body').innerText()).slice(0,7000));const checkout=p.getByRole('button',{name:/Tramitar pedido/i});if(await checkout.count()){await checkout.first().click();await p.waitForTimeout(10000);}
+console.log('URL',p.url());console.log('BODY',(await p.locator('body').innerText()).slice(-16000));console.log('BUTTONS',await p.getByRole('button').allTextContents());await c.close();})().catch(e=>console.error(e.message));
+

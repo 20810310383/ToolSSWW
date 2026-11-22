@@ -1,0 +1,103 @@
+[
+  {
+    "status": 200,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current?fields=DEFAULT,potentialProductPromotions,appliedCouponNames,appliedProductPromotions,potentialOrderPromotions,appliedOrderPromotions,entries(totalPrice(formattedValue),product(images(FULL),stock(FULL)),basePrice(formattedValue,value),updateable),totalPrice(formattedValue),totalItems,totalPriceWithTax(formattedValue),totalDiscounts(value,formattedValue),subTotal(formattedValue,%20value),deliveryItemsQuantity,deliveryCost(formattedValue),totalTax(formattedValue,%20value),pickupItemsQuantity,net,appliedVouchers,productDiscounts(FULL),user,saveTime,name,description,deliveryOrderGroups(FULL),broadbandAddress(FULL)&lang=es&curr=EUR",
+    "payload": null
+  },
+  {
+    "status": 200,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/pages?pageType=ProductPage&code=SM-S921BLGDEUB&lang=es&curr=EUR",
+    "payload": null
+  },
+  {
+    "status": 200,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/products/SM-S921BLGDEUB?fields=name,purchasable,allPrices(FULL),exVatPrice(FULL),exVatTieredPrices(FULL),baseOptions(FULL),baseProduct,availableServices,supportedAvailableServices,variantOptions(FULL),variantType,showFinanceCalculator,backOrderMessage,pviType,pviSubType,pimInfoSubtype,salesUnit(DEFAULT),aemAdditionalInfoTypes,merchandisingText,shippingETA&lang=es&curr=EUR",
+    "payload": null
+  },
+  {
+    "status": 200,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/products/SM-S921BLGDEUB?fields=code,purchasable,name,summary,price(formattedValue,DEFAULT),images(galleryIndex,FULL),baseProduct,averageRating,stock(DEFAULT),description,availableForPickup,url,numberOfReviews,manufacturer,categories(FULL),priceRange,multidimensional,tags&lang=es&curr=EUR",
+    "payload": null
+  },
+  {
+    "status": 201,
+    "method": "POST",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts?fields=DEFAULT%2CpotentialProductPromotions%2CappliedProductPromotions%2CpotentialOrderPromotions%2CappliedOrderPromotions%2Centries(totalPrice(formattedValue)%2Cproduct(images(FULL)%2Cstock(FULL))%2CbasePrice(formattedValue%2Cvalue)%2Cupdateable)%2CtotalPrice(formattedValue)%2CtotalItems%2CtotalPriceWithTax(formattedValue)%2CtotalDiscounts(value%2CformattedValue)%2CsubTotal(formattedValue)%2CtotalUnitCount%2CdeliveryItemsQuantity%2CdeliveryCost(formattedValue)%2CtotalTax(formattedValue%2C%20value)%2CpickupItemsQuantity%2Cnet%2CappliedVouchers%2CproductDiscounts(formattedValue)%2Cuser&lang=es&curr=EUR",
+    "payload": "{}",
+    "body": "{\n   \"type\" : \"cartWsDTO\",\n   \"aftershipOrderTracking\" : false,\n   \"allowSpecialDiscount\" : true,\n   \"appliedCouponCodes\" : [ ],\n   \"appliedVouchers\" : [ ],\n   \"cartLevelSplitEnabled\" : false,\n   \"code\" : \"ES261121-37313680\",\n   \"customerCurrentTier\" : \"\",\n   \"deliveryCost\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.00\n   },\n   \"deliveryCostExclServiceFee\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.00\n   },\n   \"deliveryItemsQuantity\" : 0,\n   \"deliveryOrderGroups\" : [ ],\n   \"disableCreditNoteButton\" : false,\n   \"disableTaxInvoiceButton\" : false,\n   \"displayLeasingPriceAsTotal\" : false,\n   \"enabledReplacementReasonsByEntry\" : false,\n   \"enabledReturnReasonsByEntry\" : false,\n   \"entries\" : [ ],\n   \"existsLeasingCustomerPage\" : false,\n   \"expensiveProductIsPreOrder\" : false,\n   \"externalCouponEligible\" : false,\n   \"guid\" : \"079ee021-741f-49a8-bd28-7f36aaf63bec\",\n   \"hasCancellableProducts\" : false,\n   \"hasExchangeableProducts\" : false,\n   \"hasMultipleConsignment\" : false,\n   \"hasPreOrderTradeInEnabled\" : false,\n   \"hasReservationProduct\" : false,\n   \"hasReturnableProducts\" : false,\n   \"hasTradeIn\" : false,\n   \"hasTradeUp\" : false,\n   \"hasWarranty\" : false,\n   \"hideTitle\" : false,\n   \"isAfterPay\" : false,\n   \"isContainInstallmentBenefits\" : false,\n   \"isEupOrder\" : false,\n   \"isEvollis\" : false,\n   \"isExpertCareStandaloneService\" : false,\n   \"isExpertCleaningStandaloneService\" : false,\n   \"isFullAmountPaid\" : false,\n   \"isGERPNonVatPartnerEnabled\" : false,\n   \"isGiftingOrder\" : false,\n   \"isInstallmentOrder\" : false,\n   \"isLeasing\" : false,\n   \"isMXProductsCart\" : false,\n   \"isReadyToPayRemaining\" : false,\n   \"isReturnAllowed\" : false,\n   \"isRnplOrder\" : false,\n   \"isSMBVatReversalDisplayEnabled\" : false,\n   \"isSmbStoreAutoComplete\" : false,\n   \"isTierEnabled\" : true,\n   \"isTieredDiscountEnabled\" : false,\n   \"isTokenHadPaid\" : false,\n   \"isWarrantyStandaloneProductOnlyV2Flow\" : false,\n   \"isWithdrawAllowed\" : false,\n   \"maxFileUploadLimit\" : 0,\n   \"minFileUploadLimit\" : 0,\n   \"net\" : false,\n   \"netSubTotal\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.00\n   },\n   \"netTotalPrice\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.00\n   },\n   \"nonCalendarLeadTimeEnabled\" : false,\n   \"pickupItemsQuantity\" : 0,\n   \"preReserve\" : false,\n   \"productDiscounts\" : {\n      \"formattedValue\" : \"0,00 €\"\n   },\n   \"redeemedVouchers\" : [ ],\n   \"returnExternalFormEnabled\" : false,\n   \"returnReviewCSAgentEnabled\" : false,\n   \"serviceFeeCost\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.00\n   },\n   \"showEupCTA\" : false,\n   \"showSCPlusCTA\" : false,\n   \"splitRequested\" : false,\n   \"subTotal\" : {\n      \"formattedValue\" : \"0,00 €\"\n   },\n   \"subTotalBasePrice\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"value\" : 0.00\n   },\n   \"totalDiscounts\" : {\n      \"formattedValue\" : \"0,00 €\",\n      \"value\" : 0.0\n   },\n   \"totalEtiCashbackDiscount\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.00\n   },\n   \"totalEtiInstantDiscount\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.00\n   },\n   \"totalItems\" : 0,\n   \"totalPrice\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"value\" : 0.0\n   },\n   \"totalPriceWithTax\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"value\" : 0.00\n   },\n   \"totalPriceWithoutDeliveryCost\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.00\n   },\n   \"totalProviderTradeInDiscount\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.00\n   },\n   \"totalTax\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.0\n   },\n   \"tradeInCashBackValue\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.00\n   },\n   \"tradeInDiscountValue\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0.00\n   },\n   \"tradeInDiscountValueBeforeForfeit\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"formattedValueNoCurrency\" : \"0,00 \",\n      \"priceType\" : \"BUY\",\n      \"value\" : 0\n   },\n   \"tradeUpTotalDiscountAmount\" : {\n      \"currencyIso\" : \"EUR\",\n      \"formattedValue\" : \"0,00 €\",\n      \"value\" : 0.00\n   },\n   \"updateAddressAllowed\" : false,\n   \"user\" : {\n      \"name\" : \"4:cpc+2iA1LZeNE/Y6ydVyIQ==uOME1oc579ChZp7dn4RhXg== 4:9QrBcL3Oeh2b+qWnYFqADw==uOME1oc579ChZp7dn4RhXg==\",\n      \"uid\" : \"anonymous\"\n   },\n   \"vatReverseThresholdExceeded\" : false,\n   \"bankCardDisclaimerCartLimitEnabled\" : false,\n   \"billingAddress\" : {\n      \"billingAddress\" : false,\n      \"billingAddressUpdate\" : false,\n      \"businessAddress\" : false,\n      \"defaultAddress\" : false,\n      \"elevator\" : false,\n      \"email\" : \"\",\n      \"firstName\" : \"\",\n      \"isRegisteredBillingAddress\" : false,\n      \"isRegistrationAddress\" : false,\n      \"isUserWantTaxInvoice\" : false,\n      \"lastName\" : \"\",\n      \"phone\" : \"\",\n      \"sameAsShipping\" : false,\n      \"saveInAddressBook\" : false,\n      \"shippingAddress\" : false,\n      \"visibleInAddressBook\" : false\n   },\n   \"blockCheckoutForService\" : false,\n   \"canAddBuyAndTryExternalService\" : false,\n   \"canAddFairownFlexExternalService\" : false,\n   \"canAddInsuranceExternalService\" : true,\n   \"canAddReplenishmentExternalService\" : false,\n   \"canAddSamsungCareMonthlyIfReplenishmentAdded\" : true,\n   \"canAddSimExternalService\" : true,\n   \"canAddTradeInExternalService\" : true,\n   \"canAddTradeUpExternalService\" : true,\n   \"canAddUpgradeEnrollmentExternalService\" : false,\n   \"containsOnlyDigitalDelivery\" : true,\n   \"containsPreOrderItem\" : false,\n   \"customerLeasingJourney\" : false,\n   \"deliveryPostalCode\" : \"\",\n   \"disableEditCart\" : false,\n   \"focSplitCombineFeatureEnabled\" : false,\n   \"giftSelectionEnabled\" : false,\n   \"has3PAProduct\" : false,\n   \"hasZeroPriceEntry\" : false,\n   \"installments\" : 0,\n   \"interimEmail\" : false,\n   \"irbmCheckoutValidation\" : false,\n   \"isBroadbandCart\" : false,\n   \"isCartContainsCEProd\" : false,\n   \"isContactlessPayment\" : false,\n   \"isEPDSCart\" : false,\n   \"isEPDSOrder\" : false,\n   \"isFINMandatoryForB2C\" : false,\n   \"isGiftingEligible\" : true,\n   \"isInvoiceOptionDisabled\" : false,\n   \"isLineShoppingCart\" : false,\n   \"isNekoposDelivery\" : false,\n   \"isOfferProductCampaignEnabled\" : false,\n   \"isPhoneMandatory\" : false,\n   \"isPromotionPreview\" : false,\n   \"isReservedOnline\" : false,\n   \"isRestoreMainCartEnabled\" : false,\n   \"isSharedCart\" : false,\n   \"isShipToStoreSupported\" : false,\n   \"isSimPlanCart\" : false,\n   \"isStandaloneSCCart\" : false,\n   \"isStandaloneSCMixedCart\" : false,\n   \"isUpgradeEnrollment\" : false,\n   \"isVspOrder\" : false,\n   \"messages\" : [ {\n      \"key\" : \"OPTIONAL_INFO\",\n      \"value\" : [ ]\n   }, {\n      \"key\" : \"ERROR\",\n      \"value\" : [ ]\n   }, {\n      \"key\" : \"INFO\",\n      \"value\" : [ ]\n   } ],\n   \"potentialOrderPromotions\" : [ ],\n   \"potentialProductPromotions\" : [ ],\n   \"prePurchaseGuestAllowed\" : false,\n   \"preselectedPaymentMode\" : \"\",\n   \"priceMatchSupported\" : false,\n   \"requiresTvLicense\" : false,\n   \"rewardJoinLink\" : \"https://p6-pre-qa2.samsung.com/es/mypage/rewards/\",\n   \"rewardsBannerEnabled\" : false,\n   \"rewardsBannerTextDisclaimer\" : false,\n   \"rewardsBannerTextEnabled\" : false,\n   \"rewardsComboTextEnabled\" : false,\n   \"rewardsEnrollment\" : false,\n   \"samsungFlexAddToCartByPassTNC\" : false,\n   \"shouldDisplayBopisGift\" : false,\n   \"showVerifyButton\" : false,\n   \"showWorkId\" : false,\n   \"singpassLogin\" : false,\n   \"storeAgentManager\" : false,\n   \"success\" : false,\n   \"totalFreeItems\" : 0,\n   \"totalServiceItems\" : 0,\n   \"totalUnitCount\" : 0,\n   \"vatAdjustmentApplied\" : false,\n   \"warrantyOnly\" : false,\n   \"zeroPriceEntriesCount\" : 0\n}"
+  },
+  {
+    "status": 200,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/references/products/SM-S921BLGDEUB?fields=BASIC,references(target(images(BASIC)))&referenceType=ACCESSORIES&pageSize=1&lang=es&curr=EUR",
+    "payload": null
+  },
+  {
+    "status": 200,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/references/products/SM-S921BLGDEUB?fields=FULL,references(target(images(FULL)))&referenceType=ACCESSORIES&lang=es&curr=EUR",
+    "payload": null
+  },
+  {
+    "status": 200,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/products/SM-S921BLGDEUB/relatedCategorizedProducts?fields=SIMPLE_INFO&queryType=ACCESSORIES&categoryPrefix=AEM_&lang=es&curr=EUR",
+    "payload": null
+  },
+  {
+    "status": 200,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/products/SM-S921BLGDEUB/relatedCategorizedProducts?fields=SIMPLE_INFO&queryType=ACCESSORIES&categoryPrefix=AEM_&lang=es&curr=EUR",
+    "payload": null
+  },
+  {
+    "status": 200,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/products/SM-S921?fields=code,purchasable,name,summary,price(formattedValue),images(DEFAULT,galleryIndex),baseProduct&lang=es&curr=EUR",
+    "payload": null
+  },
+  {
+    "status": 200,
+    "method": "POST",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/entries?lang=es&curr=EUR",
+    "payload": "{\"quantity\":1,\"product\":{\"code\":\"SM-S921BLGDEUB\"}}",
+    "body": "{\n   \"entry\" : {\n      \"baseProductReturned\" : false,\n      \"cancellableQty\" : 0,\n      \"cancellableQuantity\" : 0,\n      \"containsMoohanSku\" : false,\n      \"containsUpgradeService\" : false,\n      \"containsUpgradeServiceVP\" : false,\n      \"disableIncrementForMaxExternalServiceLimit\" : false,\n      \"disableWarrantyService\" : false,\n      \"entryNumber\" : 0,\n      \"exchangeable\" : false,\n      \"hasBuyAndTry\" : false,\n      \"hasCancellableKnoxManage\" : false,\n      \"hasCancellableSCBService\" : false,\n      \"hasFOC\" : false,\n      \"hasGalaxyClubService\" : false,\n      \"hideRddDate\" : false,\n      \"isBOPISFOC\" : false,\n      \"isBackOrderEntry\" : false,\n      \"isBopisOrder\" : false,\n      \"isCombinationParent\" : false,\n      \"isCustomProduct\" : false,\n      \"isFreeMonthsSMCSku\" : false,\n      \"isHideForDisplay\" : false,\n      \"isLargeItem\" : false,\n      \"isManualRefund\" : false,\n      \"isMustPurchaseWithAny\" : false,\n      \"isRecreatedFromPreOrder\" : false,\n      \"isReturnRequested\" : false,\n      \"isSellerhubProduct\" : false,\n      \"isServiceEntry\" : false,\n      \"isSitReturn\" : false,\n      \"isSizingKitSku\" : false,\n      \"isStackableTradeInDisabled\" : false,\n      \"isTradeInDisabled\" : false,\n      \"isTradeInGiftFreeEntry\" : false,\n      \"isTradeInGiftMainEntry\" : false,\n      \"isTradeInGiftOfferAvailable\" : false,\n      \"mainAndFocInDifferentGroup\" : false,\n      \"mainCombinationProduct\" : \"\",\n      \"modifyPreOrderSelectedAddedServicesDisabled\" : false,\n      \"prescriptionLensIntent\" : false,\n      \"product\" : {\n         \"code\" : \"SM-S921BLGDEUB\",\n         \"disablePriceRowSavingInfo\" : false,\n         \"exchangeableQuantity\" : 0,\n         \"freeMonths\" : 0,\n         \"giftOrBundleSelectionRequired\" : false,\n         \"hasGiftSelection\" : false,\n         \"isCEProduct\" : false,\n         \"isCombinedSKUProduct\" : false,\n         \"isIMProduct\" : false,\n         \"isSecured\" : false,\n         \"isSmartThingsEnabled\" : false,\n         \"maxOrderQuantity\" : 0,\n         \"minQuantityToPurchase\" : 0,\n         \"name\" : \"Galaxy S24 (Exclusivo Online)\",\n         \"positionOrderFlag\" : false,\n         \"rank\" : 0,\n         \"returnableQuantity\" : 0,\n         \"showFinanceCalculator\" : false,\n         \"showSizingPrice\" : false,\n         \"timeSalePromotion\" : false,\n         \"url\" : \"/Productos/Smartphones/Galaxy-S-Series/Galaxy-S24-Series/Galaxy-S24/p/SM-S921BLGDEUB\",\n         \"vatEligible\" : false\n      },\n      \"returnableQty\" : 0,\n      \"returnableQuantity\" : 0,\n      \"reviewed\" : false,\n      \"rewardProportionateAmount\" : 0.0,\n      \"serviceEntry\" : false,\n      \"showPriceDrop\" : false,\n      \"specialPriceEntry\" : false,\n      \"supportsTradeInSubsidy\" : false,\n      \"timeSalePromotion\" : false,\n      \"tradeInPromotionDiscountAllowedWithPromotion\" : false,\n      \"updateable\" : false,\n      \"warrantyEntry\" : false,\n      \"zeroActionEntry\" : false\n   },\n   \"quantity\" : 1,\n   \"quantityAdded\" : 1,\n   \"statusCode\" : \"success\"\n}"
+  },
+  {
+    "status": 200,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current?fields=DEFAULT,potentialProductPromotions,appliedCouponNames,appliedProductPromotions,potentialOrderPromotions,appliedOrderPromotions,entries(totalPrice(formattedValue),product(images(FULL),stock(FULL)),basePrice(formattedValue,value),updateable),totalPrice(formattedValue),totalItems,totalPriceWithTax(formattedValue),totalDiscounts(value,formattedValue),subTotal(formattedValue,%20value),deliveryItemsQuantity,deliveryCost(formattedValue),totalTax(formattedValue,%20value),pickupItemsQuantity,net,appliedVouchers,productDiscounts(FULL),user,saveTime,name,description,deliveryOrderGroups(FULL),broadbandAddress(FULL)&lang=es&curr=EUR",
+    "payload": null
+  },
+  {
+    "status": 200,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current?fields=DEFAULT,potentialProductPromotions,appliedCouponNames,appliedProductPromotions,potentialOrderPromotions,appliedOrderPromotions,entries(totalPrice(formattedValue),product(images(FULL),stock(FULL)),basePrice(formattedValue,value),updateable),totalPrice(formattedValue),totalItems,totalPriceWithTax(formattedValue),totalDiscounts(value,formattedValue),subTotal(formattedValue,%20value),deliveryItemsQuantity,deliveryCost(formattedValue),totalTax(formattedValue,%20value),pickupItemsQuantity,net,appliedVouchers,productDiscounts(FULL),user,saveTime,name,description,deliveryOrderGroups(FULL),broadbandAddress(FULL)&lang=es&curr=EUR",
+    "payload": null
+  },
+  {
+    "status": 404,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/pages?pageType=ContentPage&pageLabelOrId=%2Faddon&lang=es&curr=EUR",
+    "payload": null,
+    "body": "{\n   \"errors\" : [ {\n      \"message\" : \"The application has encountered an error\",\n      \"type\" : \"CMSItemNotFoundError\"\n   } ]\n}"
+  },
+  {
+    "status": 404,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/pages?pageType=ContentPage&pageLabelOrId=%2Faddon&lang=es&curr=EUR",
+    "payload": null,
+    "body": "{\n   \"errors\" : [ {\n      \"message\" : \"The application has encountered an error\",\n      \"type\" : \"CMSItemNotFoundError\"\n   } ]\n}"
+  },
+  {
+    "status": 404,
+    "method": "GET",
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/pages?pageType=ContentPage&pageLabelOrId=%2Faddon&lang=es&curr=EUR",
+    "payload": null,
+    "body": "{\n   \"errors\" : [ {\n      \"message\" : \"The application has encountered an error\",\n      \"type\" : \"CMSItemNotFoundError\"\n   } ]\n}"
+  }
+]

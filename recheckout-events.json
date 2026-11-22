@@ -1,0 +1,23 @@
+[
+  {
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/recommendation/users/current/getProductRecommendations?lang=es&curr=EUR",
+    "method": "POST",
+    "status": 200,
+    "payload": "{\"pageType\":\"cart\",\"maxDisplay\":9,\"cartId\":\"ES261121-37313858\",\"consent\":\"permit 1 required\"}",
+    "body": "[]"
+  },
+  {
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/order/ES261121-37313858/analytics?lang=es&curr=EUR",
+    "method": "POST",
+    "status": 200,
+    "payload": "{\"clientId\":\"null\",\"sessionId\":\"undefined\",\"linkURL\":\"https://stg2.shop.samsung.com/es/orderConfirmation;orderCode=ES261121-37313858\",\"reportSuiteID\":\"sssamsung4mstglobaldev\",\"consentFlag\":\"N\",\"enabledFlag\":true,\"siteSection\":\"shop\",\"siteCode\":\"es\",\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36\"}",
+    "body": "true"
+  },
+  {
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/order/ES261121-37313858/analytics?lang=es&curr=EUR",
+    "method": "POST",
+    "status": 200,
+    "payload": "{\"clientId\":\"null\",\"sessionId\":\"undefined\",\"linkURL\":\"https://stg2.shop.samsung.com/es/orderConfirmation;orderCode=ES261121-37313858\",\"reportSuiteID\":\"sssamsung4mstglobaldev\",\"consentFlag\":\"N\",\"enabledFlag\":true,\"siteSection\":\"shop\",\"siteCode\":\"es\",\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36\"}",
+    "body": "true"
+  }
+]

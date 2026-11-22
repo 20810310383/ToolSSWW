@@ -1,0 +1,109 @@
+[
+  {
+    "round": 1,
+    "items": [
+      {
+        "code": "RB33J3515S9/EF",
+        "quantity": 1
+      },
+      {
+        "code": "RB38C600CS9/EF",
+        "quantity": 2
+      }
+    ],
+    "startedAt": "2026-11-22T01:44:40.055Z",
+    "status": "confirmed_cart_empty",
+    "orderCode": "ES261122-37315473",
+    "confirmationURL": "https://stg2.shop.samsung.com/es/orderConfirmation;orderCode=ES261122-37315473",
+    "finishedAt": "2026-11-22T01:48:50.899Z"
+  },
+  {
+    "round": 2,
+    "items": [
+      {
+        "code": "RB33J3515S9/EF",
+        "quantity": 2
+      },
+      {
+        "code": "RB38C600CS9/EF",
+        "quantity": 3
+      }
+    ],
+    "startedAt": "2026-11-22T01:48:51.090Z",
+    "status": "confirmed_cart_empty",
+    "orderCode": "ES261121-37314834",
+    "confirmationURL": "https://stg2.shop.samsung.com/es/orderConfirmation;orderCode=ES261121-37314834",
+    "finishedAt": "2026-11-22T01:50:20.105Z"
+  },
+  {
+    "round": 3,
+    "items": [
+      {
+        "code": "RB33J3515S9/EF",
+        "quantity": 3
+      },
+      {
+        "code": "RB38C600CS9/EF",
+        "quantity": 1
+      }
+    ],
+    "startedAt": "2026-11-22T01:50:20.117Z",
+    "status": "confirmed_cart_empty",
+    "orderCode": "ES261122-37315509",
+    "confirmationURL": "https://stg2.shop.samsung.com/es/orderConfirmation;orderCode=ES261122-37315509",
+    "finishedAt": "2026-11-22T01:51:28.449Z"
+  },
+  {
+    "round": 4,
+    "items": [
+      {
+        "code": "RB33J3515S9/EF",
+        "quantity": 1
+      },
+      {
+        "code": "RB38C600CS9/EF",
+        "quantity": 2
+      }
+    ],
+    "startedAt": "2026-11-22T01:51:28.451Z",
+    "status": "confirmed_cart_empty",
+    "orderCode": "ES261122-37315510",
+    "confirmationURL": "https://stg2.shop.samsung.com/es/orderConfirmation;orderCode=ES261122-37315510",
+    "finishedAt": "2026-11-22T01:52:56.148Z"
+  },
+  {
+    "round": 5,
+    "items": [
+      {
+        "code": "RB33J3515S9/EF",
+        "quantity": 2
+      },
+      {
+        "code": "RB38C600CS9/EF",
+        "quantity": 3
+      }
+    ],
+    "startedAt": "2026-11-22T01:52:56.150Z",
+    "status": "confirmed_cart_empty",
+    "orderCode": "ES261122-37315511",
+    "confirmationURL": "https://stg2.shop.samsung.com/es/orderConfirmation;orderCode=ES261122-37315511",
+    "finishedAt": "2026-11-22T01:54:20.825Z"
+  },
+  {
+    "round": 6,
+    "items": [
+      {
+        "code": "RB33J3515S9/EF",
+        "quantity": 3
+      },
+      {
+        "code": "RB38C600CS9/EF",
+        "quantity": 1
+      }
+    ],
+    "startedAt": "2026-11-22T01:54:20.826Z",
+    "status": "stopped",
+    "error": "locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('form.customer-form-v2:visible input[name=phone]:visible').first() to be visible\u001b[22m\n",
+    "finishedAt": "2026-11-22T01:54:50.475Z"
+  }
+]

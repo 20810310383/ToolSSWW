@@ -1,0 +1,5 @@
+﻿const {chromium}=require('playwright');
+(async()=>{const c=await chromium.launchPersistentContext('.tmp/samsung-cart-check/checkout-profile',{channel:'chrome',headless:false});try{const p=c.pages()[0]||await c.newPage();await p.goto('https://stg2.shop.samsung.com/es/guestlogin/checkout',{waitUntil:'domcontentloaded'});await p.getByText(/Iniciar sesi/i).click();await p.waitForTimeout(8000);await p.locator('#account').fill('tudotest321@gmail.com');await p.getByRole('button',{name:'Siguiente',exact:true}).click();await p.waitForTimeout(5000);await p.locator('#password').fill(process.env.SAMSUNG_TEST_PASSWORD);await p.getByRole('button',{name:/^Iniciar sesi/i}).click();await p.waitForTimeout(8000);console.log('URL',p.url());console.log('BODY',(await p.locator('body').innerText()).slice(0,10000));console.log('INPUTS',await p.locator('input').evaluateAll(es=>es.map(e=>({type:e.type,name:e.name,id:e.id,placeholder:e.placeholder}))));}finally{await c.close()}})().catch(e=>console.error(e.message));
+
+
+

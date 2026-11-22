@@ -1,0 +1,584 @@
+[
+  {
+    "time": "2026-11-21T18:59:11.717Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/currentConfig?lang=en&curr=USD"
+  },
+  {
+    "time": "2026-11-21T18:59:11.816Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/getOverrideJsUrlContent"
+  },
+  {
+    "time": "2026-11-21T18:59:11.831Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/multistore?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:12.167Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/multistore/getExternalAggregatorDetails?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:12.189Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/basestores/es?fields=DEFAULT&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:12.329Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current?fields=FULL&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:12.448Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:12.461Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current?fields=DEFAULT,potentialProductPromotions,appliedCouponNames,appliedProductPromotions,potentialOrderPromotions,appliedOrderPromotions,entries(totalPrice(formattedValue),product(images(FULL),stock(FULL)),basePrice(formattedValue,value),updateable),totalPrice(formattedValue),totalItems,totalPriceWithTax(formattedValue),totalDiscounts(value,formattedValue),subTotal(formattedValue,%20value),deliveryItemsQuantity,deliveryCost(formattedValue),totalTax(formattedValue,%20value),pickupItemsQuantity,net,appliedVouchers,productDiscounts(FULL),user,saveTime,name,description,deliveryOrderGroups(FULL),broadbandAddress(FULL)&lang=es&curr=EUR&page=CART_INFO"
+  },
+  {
+    "time": "2026-11-21T18:59:12.476Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/deliverycountries?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:12.610Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/pages?pageType=ContentPage&pageLabelOrId=%2Fcart&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:12.924Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/checkAccess?pageId=cartPageV2&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:13.332Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/rewards/isRewardsEnabled?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:13.569Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/multistore?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:13.571Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/ssoInfo?page=cart&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:13.577Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/addresses/?fields=FULL&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:13.785Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/paymentmodes/es-evollisPaymentMode/details?operation=cart-page&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:13.793Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/currencies?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:13.897Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&currentPage=0&pageSize=5&componentIds=vatModalTitle%2CvatModalPrimaryText%2CvatModalsecondaryNotice%2CvatModalCancelNote%2CCartDisclaimerForDeliveryLateText&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:13.912Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/ssoInfo?page=cart&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:13.984Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/minicart/totalProducts?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:14.174Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&currentPage=0&pageSize=2&componentIds=GalaxyUpgradeCartSurchargeDesc%2CGalaxyUpgradeCartResidualValueDesc&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:14.516Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components/generated-TopLeftNavBarCollection?fields=DEFAULT&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:14.520Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/products/RB33J3515S9/EF/getProductBenefits?fields=DEFAULT&productBenefitTypes=&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:14.709Z",
+    "method": "POST",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/recommendation/users/current/getProductRecommendations?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:14.726Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&componentIds=es-generated-TokoHeaderUserMenu&pageSize=1&nocache=1795287553744&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:14.768Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/rewards/getEstimatedRewardPoints?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:15.086Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/paymentmodes/es-adyenPaypalExpress/details?resetPaymentMode=true&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:15.431Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/paymentmodes/es-evollisPaymentMode/details?operation=cart-page&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:15.495Z",
+    "method": "GET",
+    "status": 204,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/wishlist/default/product/exist?productCode=DW60M6040FW/EC&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:15.504Z",
+    "method": "GET",
+    "status": 204,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/wishlist/default/product/exist?productCode=DW60M6040FS/EC&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:15.508Z",
+    "method": "GET",
+    "status": 204,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/wishlist/default/product/exist?productCode=DW60M6040BB/EO&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:15.514Z",
+    "method": "GET",
+    "status": 204,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/wishlist/default/product/exist?productCode=WW90CGC04DABEC&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:15.670Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&componentIds=generated-TopLeftNavBarDropDownComponent0,generated-TopLeftNavBarDropDownComponent1,generated-TopLeftNavBarDropDownComponent2,generated-TopLeftNavBarDropDownComponent3,generated-TopLeftNavBarDropDownComponent4,generated-TopLeftNavBarDropDownComponent5,generated-TopLeftNavBarDropDownComponent6,generated-TopLeftNavBarDropDownComponent7,generated-TopLeftNavBarDropDownComponent8,generated-TopLeftNavBarDropDownComponent9&pageSize=10&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:15.828Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&componentIds=es-generated-ExclusiveBenefitsWithASamsungAccount,es-generated-MyPageLoggedInLink,es-generated-OrdersLoggedInLink,es-generated-WishlistLoggedInLink,es-generated-ProductRegistrationLoggedInLink,es-generated-RewardsLoggedInLink,es-generated-MySmartthingsLoggedInLink,es-generated-MembersLoggedInLink,es-generated-SamsungPlusLoggedInLink,es-generated-OffersForStudentsLoggedInLink&pageSize=10&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:15.904Z",
+    "method": "GET",
+    "status": 204,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/wishlist/default/product/exist?productCode=WW90CGC04DAEEC&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:15.970Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/getActivePaymentComponentIds?componentIds=PaymentBizumIconLink,PaymentVisaIconLink,PaymentMastercardIconLink,PaymentAmericanExpressIconLink,PaymentSamsungPayIconLink,PaymentPaypalIconLink,PaymentLaCaixaIconLink,PaymentKLARNAIconLink&pageSize=8&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:16.315Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/rewards/isRewardsEnrolled?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:16.693Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&componentIds=PaymentBizumIconLink,PaymentVisaIconLink,PaymentMastercardIconLink,PaymentAmericanExpressIconLink,PaymentSamsungPayIconLink,PaymentPaypalIconLink,PaymentLaCaixaIconLink,PaymentKLARNAIconLink&pageSize=8&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:16.911Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/validate?page=CART&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:17.165Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/checkout/v2/steps?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:17.445Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/paymentmodes/es-evollisPaymentMode/details?operation=cart-page&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:18.057Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/pages?pageType=ContentPage&pageLabelOrId=%2Fcheckout%2Fone&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:18.358Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/checkAccess?pageId=checkoutOnePage&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:19.342Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components/generated-TopLeftNavBarCollection?fields=DEFAULT&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:19.360Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/checkout/v2/steps?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:19.370Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/ssoInfo?page=checkout&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:19.376Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components/generated-TopLeftNavBarCollection?fields=DEFAULT&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:19.439Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&componentIds=generated-TopLeftNavBarDropDownComponent0,generated-TopLeftNavBarDropDownComponent1,generated-TopLeftNavBarDropDownComponent2,generated-TopLeftNavBarDropDownComponent3,generated-TopLeftNavBarDropDownComponent4,generated-TopLeftNavBarDropDownComponent5,generated-TopLeftNavBarDropDownComponent6,generated-TopLeftNavBarDropDownComponent7,generated-TopLeftNavBarDropDownComponent8,generated-TopLeftNavBarDropDownComponent9&pageSize=10&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:19.455Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/tnc?context=CHECKOUT&value=orderSummaryCheckout&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:19.902Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/rewards/getEstimatedRewardPoints?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:20.109Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/pages?pageType=ContentPage&pageLabelOrId=checkout_step_contact_info&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:20.165Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/getActivePaymentComponentIds?componentIds=PaymentBizumIconLink,PaymentVisaIconLink,PaymentMastercardIconLink,PaymentAmericanExpressIconLink,PaymentSamsungPayIconLink,PaymentPaypalIconLink,PaymentLaCaixaIconLink,PaymentKLARNAIconLink&pageSize=8&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:20.195Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&componentIds=PaymentBizumIconLink,PaymentVisaIconLink,PaymentMastercardIconLink,PaymentAmericanExpressIconLink,PaymentSamsungPayIconLink,PaymentPaypalIconLink,PaymentLaCaixaIconLink,PaymentKLARNAIconLink&pageSize=8&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:20.387Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&currentPage=0&pageSize=8&componentIds=CheckoutMessageComponent%2CCheckoutContactInfoMainFormComponentV2%2CCheckoutContactInfoAddressFormComponentV2%2CCheckoutBillingAddressFormComponentV2%2CCheckoutIdentificationComponent%2CCheckoutDataProtectionBlurbParagraphComponent%2CCheckoutContactDetailsTnCComponent%2CCheckoutResponsibleParagraphComponent&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:20.447Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/dynamicforms/CHECKOUT_SHIPPING_ADDRESS?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:20.701Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/rewards/getEstimatedRewardPoints?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:20.760Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/dynamicforms/CHECKOUT_IDENTIFICATION?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:20.807Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/dynamicforms/CHECKOUT_BILLING_ADDRESS?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:20.981Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/dynamicforms/CHECKOUT_OPTIONS?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:21.224Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/dynamicforms/CHECKOUT_CUSTOMER_INFO?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:25.491Z",
+    "method": "POST",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/checkout/update?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:25.782Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/addresses/?fields=FULL&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:26.068Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/validate?group=DEFAULT&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:26.587Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/validate?group=FRAUD&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:27.171Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/validate?page=CHECKOUT_STEP_CONTACT_INFO&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:27.524Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components/generated-TopLeftNavBarCollection?fields=DEFAULT&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:27.526Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/ssoInfo?page=checkout&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:27.543Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&componentIds=generated-TopLeftNavBarDropDownComponent0,generated-TopLeftNavBarDropDownComponent1,generated-TopLeftNavBarDropDownComponent2,generated-TopLeftNavBarDropDownComponent3,generated-TopLeftNavBarDropDownComponent4,generated-TopLeftNavBarDropDownComponent5,generated-TopLeftNavBarDropDownComponent6,generated-TopLeftNavBarDropDownComponent7,generated-TopLeftNavBarDropDownComponent8,generated-TopLeftNavBarDropDownComponent9&pageSize=10&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:27.556Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components/generated-FooterComponent?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:27.653Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current?fields=DEFAULT,potentialProductPromotions,appliedCouponNames,appliedProductPromotions,potentialOrderPromotions,appliedOrderPromotions,entries(totalPrice(formattedValue),product(images(FULL),stock(FULL)),basePrice(formattedValue,value),updateable),totalPrice(formattedValue),totalItems,totalPriceWithTax(formattedValue),totalDiscounts(value,formattedValue),subTotal(formattedValue,%20value),deliveryItemsQuantity,deliveryCost(formattedValue),totalTax(formattedValue,%20value),pickupItemsQuantity,net,appliedVouchers,productDiscounts(FULL),user,saveTime,name,description,deliveryOrderGroups(FULL),broadbandAddress(FULL)&lang=es&curr=EUR&page=CONTACT_INFO"
+  },
+  {
+    "time": "2026-11-21T18:59:28.027Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/pages?pageType=ContentPage&pageLabelOrId=checkout_step_delivery&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:28.306Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&currentPage=0&pageSize=1&componentIds=DeliveryInfoNoPickupSplitComponent&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:28.832Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current?fields=DEFAULT,potentialProductPromotions,appliedCouponNames,appliedProductPromotions,potentialOrderPromotions,appliedOrderPromotions,entries(totalPrice(formattedValue),product(images(FULL),stock(FULL)),basePrice(formattedValue,value),updateable),totalPrice(formattedValue),totalItems,totalPriceWithTax(formattedValue),totalDiscounts(value,formattedValue),subTotal(formattedValue,%20value),deliveryItemsQuantity,deliveryCost(formattedValue),totalTax(formattedValue,%20value),pickupItemsQuantity,net,appliedVouchers,productDiscounts(FULL),user,saveTime,name,description,deliveryOrderGroups(FULL),broadbandAddress(FULL)&lang=es&curr=EUR&page=DELIVERY_INFO"
+  },
+  {
+    "time": "2026-11-21T18:59:29.402Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/deliverymodes/options?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:29.940Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/deliverymodes?postCode=08006&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:31.145Z",
+    "method": "POST",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/deliverymodes/update?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:31.590Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current?fields=DEFAULT,potentialProductPromotions,appliedCouponNames,appliedProductPromotions,potentialOrderPromotions,appliedOrderPromotions,entries(totalPrice(formattedValue),product(images(FULL),stock(FULL)),basePrice(formattedValue,value),updateable),totalPrice(formattedValue),totalItems,totalPriceWithTax(formattedValue),totalDiscounts(value,formattedValue),subTotal(formattedValue,%20value),deliveryItemsQuantity,deliveryCost(formattedValue),totalTax(formattedValue,%20value),pickupItemsQuantity,net,appliedVouchers,productDiscounts(FULL),user,saveTime,name,description,deliveryOrderGroups(FULL),broadbandAddress(FULL)&lang=es&curr=EUR&page=DELIVERY_INFO"
+  },
+  {
+    "time": "2026-11-21T18:59:32.205Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/validate?stockCheck=true&page=CHECKOUT_STEP_DELIVERY&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:32.495Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components/generated-TopLeftNavBarCollection?fields=DEFAULT&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:32.520Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&componentIds=generated-TopLeftNavBarDropDownComponent0,generated-TopLeftNavBarDropDownComponent1,generated-TopLeftNavBarDropDownComponent2,generated-TopLeftNavBarDropDownComponent3,generated-TopLeftNavBarDropDownComponent4,generated-TopLeftNavBarDropDownComponent5,generated-TopLeftNavBarDropDownComponent6,generated-TopLeftNavBarDropDownComponent7,generated-TopLeftNavBarDropDownComponent8,generated-TopLeftNavBarDropDownComponent9&pageSize=10&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:32.624Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/ssoInfo?page=checkout&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:32.632Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current?fields=DEFAULT,potentialProductPromotions,appliedCouponNames,appliedProductPromotions,potentialOrderPromotions,appliedOrderPromotions,entries(totalPrice(formattedValue),product(images(FULL),stock(FULL)),basePrice(formattedValue,value),updateable),totalPrice(formattedValue),totalItems,totalPriceWithTax(formattedValue),totalDiscounts(value,formattedValue),subTotal(formattedValue,%20value),deliveryItemsQuantity,deliveryCost(formattedValue),totalTax(formattedValue,%20value),pickupItemsQuantity,net,appliedVouchers,productDiscounts(FULL),user,saveTime,name,description,deliveryOrderGroups(FULL),broadbandAddress(FULL)&lang=es&curr=EUR&page=DELIVERY_INFO"
+  },
+  {
+    "time": "2026-11-21T18:59:33.131Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/pages?pageType=ContentPage&pageLabelOrId=checkout_step_payment&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:33.394Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&currentPage=0&pageSize=1&componentIds=PaymentModesComponentV2&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:33.944Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/tnc?context=CHECKOUT&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:33.951Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/upp/isUPPEnabled?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:33.983Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/tnc?context=CHECKOUT&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:34.078Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/paymentmodes?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:39.865Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/validate?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:40.936Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/paymentmodes/es-adyenCcPaymentMode/details?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:46.418Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/cms/components?fields=DEFAULT&currentPage=0&pageSize=1&componentIds=PaymentMethodsWithConsent&lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:46.428Z",
+    "method": "POST",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/paymentmodes/es-adyenCcPaymentMode/details?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:46.894Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current?fields=DEFAULT,potentialProductPromotions,appliedCouponNames,appliedProductPromotions,potentialOrderPromotions,appliedOrderPromotions,entries(totalPrice(formattedValue),product(images(FULL),stock(FULL)),basePrice(formattedValue,value),updateable),totalPrice(formattedValue),totalItems,totalPriceWithTax(formattedValue),totalDiscounts(value,formattedValue),subTotal(formattedValue,%20value),deliveryItemsQuantity,deliveryCost(formattedValue),totalTax(formattedValue,%20value),pickupItemsQuantity,net,appliedVouchers,productDiscounts(FULL),user,saveTime,name,description,deliveryOrderGroups(FULL),broadbandAddress(FULL)&lang=es&curr=EUR&page=PAYMENT_INFO"
+  },
+  {
+    "time": "2026-11-21T18:59:47.608Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/rewards/getEstimatedRewardPoints?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:47.937Z",
+    "method": "GET",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/users/current/carts/current/rewards/getEstimatedRewardPoints?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:48.569Z",
+    "method": "POST",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/order/ES261121-37313677/analytics?lang=es&curr=EUR"
+  },
+  {
+    "time": "2026-11-21T18:59:57.269Z",
+    "method": "POST",
+    "status": 200,
+    "url": "https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es/order/ES261121-37313677/analytics?lang=es&curr=EUR"
+  }
+]

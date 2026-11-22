@@ -1,0 +1,8 @@
+﻿const {chromium}=require('playwright');const fs=require('fs');
+(async()=>{const c=await chromium.launchPersistentContext('.tmp/samsung-cart-check/checkout-profile',{channel:'chrome',headless:false});const events=[];try{const p=c.pages()[0];p.on('response',async r=>{const q=r.request();if(/tokocommercewebservices/.test(r.url())&&q.method()!=='GET'){const e={method:q.method(),url:r.url(),status:r.status(),payload:q.postData()};try{e.body=(await r.text()).slice(0,12000)}catch{}events.push(e);console.log('API',JSON.stringify(e));}});
+await p.goto('https://stg2.shop.samsung.com/es/checkout/one?step=CHECKOUT_STEP_CONTACT_INFO',{waitUntil:'domcontentloaded'});await p.waitForTimeout(12000);
+const manual=p.getByRole('button',{name:/Introduzca la direcci/i});if(await manual.isVisible())await manual.click();
+await p.locator('input[name=line1]').first().fill('Carrer de Muntaner, 460');await p.locator('input[name=postalCode]').first().fill('08006');await p.locator('input[name=town]').first().fill('Barcelona');await p.locator('input[name=fiscalCode]').fill('00045678T');
+console.log('SELECTS',await p.locator('mat-select,select,[role=combobox]').evaluateAll(es=>es.map(e=>({tag:e.tagName,text:e.innerText,id:e.id}))));console.log('PHONE_PRESENT',!!(await p.locator('input[name=phone]').first().inputValue()));
+await p.getByRole('button',{name:/Continuar con el m/i}).click();await p.waitForTimeout(6000);console.log('BODY',(await p.locator('body').innerText()).slice(0,14000));console.log('BUTTONS',await p.getByRole('button').allTextContents());fs.writeFileSync('.tmp/samsung-cart-check/checkout-events.json',JSON.stringify(events,null,2));
+}finally{await c.close()}})().catch(e=>console.error(e.message));
