@@ -14,7 +14,10 @@
     "release:rar": "node desktop/release.cjs",
     "cli": "node cli.cjs",
     "desktop:fresh": "node desktop/launch.cjs --fresh-profile",
-    "desktop:safe": "node desktop/launch.cjs --fresh-profile --disable-http-cache --disable-gpu --disable-gpu-compositing"
+    "desktop:safe": "node desktop/launch.cjs --fresh-profile --disable-http-cache --disable-gpu --disable-gpu-compositing",
+    "desktop:doctor": "node desktop/doctor.cjs",
+    "desktop:repair-runtime": "node desktop/doctor.cjs --repair",
+    "desktop:diagnose": "node desktop/launch.cjs --fresh-profile --enable-logging=stderr --v=1"
   },
   "build": {
     "appId": "local.staging.toolkit",

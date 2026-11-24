@@ -377,3 +377,7 @@ App tach session/cache Chromium sang `%LOCALAPPDATA%/SamsungStagingToolkit/brows
 Dong cua so app cu (Ctrl+C trong terminal dang chay) truoc khi chay lai source moi bang `npm run desktop`. Khong can chay VSCode voi quyen Administrator.
 
 Neu cua so khong hien sau ban sua cache: thu `npm run desktop:safe` (profile moi, tat cache HTTP va GPU cho lan chay). App nay hien cua so ngay thay vi cho ready-to-show; chi tao trinh duyet nhung khi duoc su dung. Loi khoi dong duoc in ra terminal kem startup.log. Khong xoa profile cu.
+
+### Renderer launch-failed (18) tren Windows
+
+Day la loi tien trinh renderer khong khoi chay, khong du de ket luan do cache. Dong app, thu `npm run desktop:doctor` de xem quyen runtime va trang thai Administrator. Neu quyen sandbox doc runtime bi thieu, chay `npm run desktop:repair-runtime`: chi grant Read/Execute cho SID ALL APPLICATION PACKAGES tren `node_modules/electron/dist`, khong tat sandbox, khong doi quyen toan o dia. Sau do chay `npm run desktop:safe`. Neu van loi, chay `npm run desktop:diagnose` va gui output terminal; co the la chinh sach may/phan mem bao ve, can xac minh them.
