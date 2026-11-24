@@ -7,3 +7,6 @@ checkout-profile/
 
 # Desktop build output
 /dist/
+
+# Extracted application QA and temporary artifacts
+/tmp/

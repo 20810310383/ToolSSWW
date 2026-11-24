@@ -359,3 +359,13 @@ Checkout nhúng được nối với Playwright qua cổng DevTools cục bộ. 
 ### Checkout khi có SKU hết hàng
 
 Trong luồng thêm giỏ + checkout, lỗi `noStock`/`InsufficientStockError` được ghi cảnh báo rồi tiếp tục SKU tiếp theo. Tool đọc lại giỏ, checkout với SKU và quantity thực sự có trong giỏ (nếu chỉ thêm được một phần quantity sẽ báo cảnh báo). Nếu không có SKU nào, lượt đó bị bỏ qua; không mở checkout. Lỗi khác như đăng nhập, mạng hoặc API không xác định vẫn dừng để tránh dùng giỏ chưa rõ trạng thái. Kết quả từng lượt hiển thị danh sách đã xác nhận.
+
+### Ban 1.1.6: khoi dong va man hinh den
+
+Ban dong goi dung render phan mem de tranh loi GPU/driver. Neu giao dien khong khoi tao, app hien thong bao loi va ghi `%APPDATA%/samsung-staging-toolkit/startup.log`. Chua du log de ket luan nguyen nhan tren may khac. Giai nen day du va thu `KHOI-DONG.cmd` de loai tru bien `ELECTRON_RUN_AS_NODE` thua ke tu IDE/terminal. Launcher chi thay bien cho lan chay do.
+
+Quy trinh release tao ban sao source tam de checkout dung o buoc 3; giu nguyen hai dong click trong source runner goc theo yeu cau. Ban cu chi duoc xoa trong dist sau khi goi moi kiem tra thanh cong.
+
+### Desktop man hinh den khi chay npm
+
+Chay `npm run desktop`: launcher tu loai bien `ELECTRON_RUN_AS_NODE` cho tien trinh app, khong thay bien he thong. Neu van den, dong cua so app roi thu `npm run desktop:fresh`. Lenh nay dung profile kiem tra moi, khong xoa profile/cookie cu; can dang nhap lai trong phien kiem tra. Neu profile moi hien UI con profile cu khong hien, can kiem tra cache/session cua profile cu, khong ket luan la thieu chu ky. Neu ca hai deu den, gui noi dung startup.log va loi terminal de khoanh vung.

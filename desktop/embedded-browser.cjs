@@ -3,7 +3,7 @@ const {EventEmitter}=require('node:events');
 class EmbeddedBrowser extends EventEmitter{
  constructor(win,emit){super();this.win=win;this.emitUI=emit;this.tabs=[];this.selected=null;this.visible=false;this.bounds={x:252,y:215,width:800,height:500};this.storage=session.fromPartition('persist:samsung-embedded');this.storage.setPermissionRequestHandler((_wc,_permission,done)=>done(false));this.storage.setPermissionCheckHandler(()=>false);}
  state(){this.emitUI({type:'embeddedState',selected:this.selected,tabs:this.tabs.map(p=>({id:p.id,title:p.view.webContents.getTitle()||'Tab mới',url:p.view.webContents.getURL(),loading:p.view.webContents.isLoading()}))});}
- layout(){const [w,h]=this.win.getContentSize();const b=this.bounds;for(const p of this.tabs){p.view.setBounds({x:Math.max(0,b.x),y:Math.max(0,b.y),width:Math.max(1,Math.min(b.width,w-b.x)),height:Math.max(1,Math.min(b.height,h-b.y))});p.view.setVisible(this.visible&&p.id===this.selected);}}
+ layout(){if(this.win.isDestroyed())return;const [w,h]=this.win.getContentSize();const b=this.bounds;for(const p of this.tabs){p.view.setBounds({x:Math.max(0,b.x),y:Math.max(0,b.y),width:Math.max(1,Math.min(b.width,w-b.x)),height:Math.max(1,Math.min(b.height,h-b.y))});p.view.setVisible(this.visible&&p.id===this.selected);}}
  show(id){if(id)this.selected=id;this.visible=true;this.emitUI({type:'embeddedFocus'});this.layout();this.state();}
  async newPage(){
   const view=new WebContentsView({webPreferences:{session:this.storage,nodeIntegration:false,contextIsolation:true,sandbox:true}});const wc=view.webContents;const scripts=[];const page={id:String(wc.id),view,isClosed:()=>wc.isDestroyed(),setDefaultTimeout(){},goto:async url=>{if(!/^https:\/\//.test(url))throw Error('Chỉ mở HTTPS');await wc.loadURL(url);},evaluate:async(fn,arg)=>wc.executeJavaScript('('+fn.toString()+')('+JSON.stringify(arg)+')'),addInitScript:async(fn,arg)=>scripts.push('('+fn.toString()+')('+JSON.stringify(arg)+')'),bringToFront:async()=>this.show(page.id)};
@@ -21,7 +21,7 @@ class EmbeddedBrowser extends EventEmitter{
   return {newPage:async()=>{const native=await this.newPage();const marker='about:blank#embedded-'+native.id;await native.view.webContents.loadURL(marker);let page;for(let i=0;i<100;i++){page=pages().find(p=>p.url()===marker);if(page)break;await new Promise(r=>setTimeout(r,30));}if(!page)throw Error('Không kết nối được tab nhúng cho checkout.');page.bringToFront=async()=>this.show(native.id);return page;},pages:()=>pages().filter(p=>this.tabs.some(t=>t.view.webContents.getURL()===p.url())),clearCookies:()=>this.clearCookies(),close:()=>this.close(),once:(...args)=>this.once(...args)};
  }
  async clearCookies(){const cookies=await this.storage.cookies.get({});for(const c of cookies)await this.storage.cookies.remove((c.secure?'https://':'http://')+c.domain.replace(/^\./,'')+(c.path||'/'),c.name);await this.storage.flushStorageData();}
- async close(){for(const p of [...this.tabs]){this.win.contentView.removeChildView(p.view);p.view.webContents.close();}this.emit('close');}
+ async close(){for(const p of [...this.tabs]){if(!this.win.isDestroyed())this.win.contentView.removeChildView(p.view);if(!p.isClosed())p.view.webContents.close();}this.emit('close');}
  async command(action,id,url){
  if(action==='new'){await this.newPage();return;}
  if(action==='navigate'){

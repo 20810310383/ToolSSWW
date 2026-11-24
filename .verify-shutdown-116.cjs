@@ -1,0 +1,1 @@
+﻿const fs=require('fs');let s=fs.readFileSync('verify-release-116.cjs','utf8').replace('finally{await app.close()}',"finally{await app.close();const closed=fs.readFileSync(path.join(profile,'startup.log'),'utf8');assert(!closed.includes('Error:'));console.log('PASS clean shutdown.');}");fs.writeFileSync('verify-release-116.cjs',s);

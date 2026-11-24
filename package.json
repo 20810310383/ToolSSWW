@@ -3,22 +3,23 @@
     "playwright": "^1.65.1"
   },
   "name": "samsung-staging-toolkit",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "private": true,
   "description": "Desktop UI for Samsung staging cart and checkout tests",
   "main": "desktop/main.cjs",
   "scripts": {
-    "desktop": "electron .",
+    "desktop": "node desktop/launch.cjs",
     "build:exe": "electron-builder --win portable --x64",
     "build:dir": "electron-builder --win --dir --x64",
     "release:rar": "node desktop/release.cjs",
-    "cli": "node cli.cjs"
+    "cli": "node cli.cjs",
+    "desktop:fresh": "node desktop/launch.cjs --fresh-profile"
   },
   "build": {
     "appId": "local.staging.toolkit",
     "productName": "Samsung Staging Toolkit",
     "directories": {
-      "output": "dist/1.1.5"
+      "output": "dist/1.1.6"
     },
     "files": [
       "desktop/**/*",

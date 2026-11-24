@@ -10,3 +10,5 @@
 #browser-address{flex:1;min-width:0;margin:0;padding:8px 12px}.browser-tabbar{display:flex;align-items:center;gap:8px}#browser-tabs{flex:1;min-width:0}#browser-new{border:1px solid #36506c;border-radius:8px;background:#17313e;color:#78ebcd;font-size:23px;padding:0 12px;height:33px;flex-shrink:0}#browser-error{color:#ffadba;font-size:11px;overflow-wrap:anywhere}#browser-error:empty{display:none}
 
 .browser-choice{margin:0;font-size:10px;min-width:185px}.browser-choice select{margin-top:2px;padding:5px 8px;font-size:11px}.header-actions{flex-wrap:wrap;justify-content:flex-end}
+
+#boot-status{position:fixed;inset:0;z-index:99999;background:#121c30;color:#deebfc;display:grid;place-content:center;padding:35px;font:15px/1.7 'Segoe UI',sans-serif}html[data-ready=true] #boot-status{display:none}
