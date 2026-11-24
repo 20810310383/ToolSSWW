@@ -21,8 +21,10 @@
                     đơn</small></span></button><button class="nav" data-mode="history"><span
                 class="nav-icon">02</span><span>Lịch sử đơn chi tiết<small>Tìm kiếm · tiến trình ·
                     SKU</small></span></button>
-        <div class="side-bottom"><span class="dot"></span> Chrome trên máy bạn<p>Hai mục dùng chung phiên đăng nhập.
-                Lịch sử mở ở tab riêng, không ngắt checkout.</p>
+        <button class="nav" data-mode="cart"><span class="nav-icon">03</span><span>Add to cart<small>Một / nhiều SKU ·
+                    quantity chung</small></span></button>
+        <button class="nav" data-mode="browser"><span class="nav-icon">04</span><span>Trình duyệt<small>Cart · lịch sử trong app</small></span></button><div class="side-bottom"><span class="dot"></span> Chromium trong app<p>Cart và lịch sử dùng chung phiên nhúng.
+                Chọn trình duyệt cho cart, checkout và lịch sử.</p>
             <div class="version">DESKTOP EDITION · 1.1 · by Khắc Tú</div>
         </div>
     </aside>
@@ -33,10 +35,10 @@
                 <h1 id="heading">Tự thêm giỏ + checkout</h1>
                 <p id="description">Nhập môi trường, SKU và thẻ test trước khi bắt đầu.</p>
             </div>
-            <div class="header-actions"><span class="status" id="status">● Sẵn sàng</span><button type="button"
+            <div class="header-actions"><label class="browser-choice">Chạy chức năng bằng<select id="browser-mode"><option value="embedded">Trình duyệt trong app</option><option value="external">Google Chrome bên ngoài</option></select></label><span class="status" id="status">● Sẵn sàng</span><button type="button"
                     id="stop" class="secondary" disabled>■ Dừng Chrome</button></div>
         </header>
-        <div id="checkout-view" class="view">
+        <div id="browser-view" class="view" hidden><div class="browser-toolbar"><button id="browser-back" type="button">←</button><button id="browser-forward" type="button">→</button><button id="browser-reload" type="button">↻</button><input id="browser-address" type="text" aria-label="Địa chỉ trang web" placeholder="Nhập URL HTTPS rồi Enter" autocomplete="off" spellcheck="false"></div><div class="browser-tabbar"><div id="browser-tabs"></div><button id="browser-new" type="button" aria-label="Mở tab mới" title="Mở tab mới">+</button></div><div id="browser-error" role="status"></div><div id="browser-surface"></div></div><div id="checkout-view" class="view">
             <form id="form">
                 <section class="card endpoints">
                     <div class="section-head">
@@ -77,8 +79,8 @@
                                         maxlength="4" value="737" required></label></div>
                             <div class="hint">Thẻ chỉ giữ trong phiên chạy, không ghi vào log hoặc lưu cấu hình.</div>
                         </div>
-                        <div class="note">Chrome mở để chạy luồng. Bạn tự đăng nhập Samsung và xác nhận đặt hàng ở bước
-                            3. Sau đơn xác nhận và giỏ trống, lượt sau mới bắt đầu.</div>
+                        <div class="note">Chrome mở để chạy luồng. Bạn tự đăng nhập Samsung (nếu chưa đăng nhập) hệ
+                            thống sẽ chờ 10 phút để bạn đăng nhập.</div>
                         <div class="buttons"><button type="submit" class="primary" id="start">▶ Run — thêm giỏ &
                                 checkout</button></div>
                     </section>
@@ -103,6 +105,33 @@
                 </div>
             </form>
         </div>
+        <div id="cart-view" class="view" hidden>
+            <form id="cart-form">
+                <section class="card endpoints">
+                    <div class="section-head">
+                        <h2>Add to cart · ROOT & API</h2><span class="tag">CHỈ THÊM GIỎ</span>
+                    </div><label>ROOT — URL cart đầy đủ<input id="cart-root" type="url"
+                            value="https://stg2.shop.samsung.com/es/cart" required></label><label>API — Commerce
+                        API<input id="cart-api" type="url"
+                            value="https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es"
+                            required></label>
+                </section>
+                <section class="card"><label>SKU — cách nhau bằng dấu phẩy<textarea id="cart-skus" rows="3"
+                            placeholder="RB33J3515S9/EF, RB38C600CS9/EF" required></textarea></label>
+                    <div class="hint">Nhập một hoặc nhiều SKU. Mã trùng được gộp thành một dòng.</div><label
+                        id="cart-common-label">Quantity cộng thêm cho mỗi SKU<input id="cart-common-quantity"
+                            type="number" min="1" max="1000" value="1" required></label>
+                    <div class="note">Tool mở Chrome → lấy cookie → gọi API thêm từng SKU → lấy lại cookie → mở URL cart
+                        đã nhập để bạn kiểm tra. Quantity cộng thêm vào giỏ hiện tại, không tự checkout.</div>
+                    <div class="buttons"><button type="submit" id="cart-start" class="primary">＋ Add to cart & mở
+                            cart</button><button type="button" id="cart-reset">↻ Xoá cookie & lấy lại</button></div>
+                </section>
+                <section class="card">
+                    <h2>Kết quả và giỏ hiện tại</h2>
+                    <div id="cart-result" class="run-items">Chưa chạy.</div>
+                </section>
+            </form>
+        </div>
         <div id="history-view" class="view" hidden>
             <form id="history-form">
                 <section class="card history-hero"><span class="tag">READ-ONLY · CHẠY SONG SONG</span>
@@ -115,7 +144,7 @@
                     <div class="section-head">
                         <h2>Kết nối lịch sử đơn</h2><span class="tag" id="history-status">CHƯA MỞ TAB</span>
                     </div><label class="check wide"><input type="checkbox" id="reuse-environment" checked> Dùng ROOT/API
-                        của mục checkout (cùng phiên Chrome)</label><label>ROOT<input id="history-root" type="url"
+                        của mục checkout (trên trình duyệt đã chọn)</label><label>ROOT<input id="history-root" type="url"
                             value="https://stg2.shop.samsung.com" required disabled></label><label>API<input
                             id="history-api" type="url"
                             value="https://s2-smn-api-cdn.ecom-stg.samsung.com/tokocommercewebservices/v2/es" required
@@ -164,6 +193,15 @@
         <footer>by Khắc Tú · Windows desktop · Chrome + VPN · Dùng cho môi trường staging</footer>
     </main>
     <script src="renderer.js"></script>
+    <dialog id="cart-readd-dialog" aria-labelledby="cart-readd-title">
+        <h2 id="cart-readd-title">Thêm lại SKU vào giỏ?</h2>
+        <p>Đã xoá cookie cũ, lấy lại cookie và mở URL cart.</p>
+        <p>Thêm các SKU đang nhập với quantity chung vào phiên giỏ hiện tại?</p>
+        <pre id="cart-readd-items"></pre>
+        <p>Quantity sẽ cộng thêm vào giỏ hiện tại.</p>
+        <div class="buttons"><button type="button" id="cart-readd-no">Không, chỉ mở cart</button><button type="button"
+                id="cart-readd-yes" class="primary">Có, thêm lại SKU</button></div>
+    </dialog>
 </body>
 
 </html>

@@ -284,3 +284,74 @@ npm run release:rar
 ```
 
 M?i l?n ch?y t?o th? m?c m?i `dist/<version>-<m? ri?ng>/`, kh?ng ghi ?? ho?c x?a b?n c?. RAR g?m `win-unpacked/` ??y ?? EXE, DLL, resources, locales; file EXE portable v? `HUONG-DAN.txt`. Kh?ng ??ng g?i cookie, profile hay log c? nh?n. Script ki?m tra CRC v? danh s?ch file trong RAR tr??c khi b?o ho?n t?t. C?n WinRAR/Rar.exe ho?c c?u h?nh `RAR_PATH`.
+
+## 13. Add to cart riêng trên desktop và terminal (chưa build EXE)
+
+Mở desktop từ source, terminal đang ở trong thư mục repo `samsung-cart-check`:
+
+```powershell
+npm install
+npm run desktop
+```
+
+Nếu đang ở thư mục cha, `cd .\samsung-cart-check` trước. Không cần chạy lệnh build để xem giao diện mới.
+
+Chọn menu **Add to cart**: nhập URL cart đầy đủ, API, danh sách SKU dấu phẩy và quantity chung. Xem hướng dẫn cập nhật bên dưới.
+
+Menu terminal mới:
+
+```powershell
+npm run cli
+```
+
+Chọn `1` thêm một SKU, `2` thêm nhiều SKU, `0` thoát. Script sẽ hỏi số SKU và quantity riêng. Hoặc chạy trực tiếp menu cũ:
+
+```powershell
+node .\addtocart.cjs
+```
+
+Bỏ qua bước chọn chế độ nếu muốn:
+
+```powershell
+node .\addtocart.cjs --single
+node .\addtocart.cjs --multi
+```
+
+Đóng Chrome automation khác nếu đang khóa cùng profile. Bản EXE đã build trước đó chưa có mục Add to cart mới này. Đã kiểm tra giao diện/IPC và xử lý thêm nhiều SKU, giữ SKU cũ, báo lỗi từng mã bằng giả lập; chưa chạy thêm hàng thật ở lần cập nhật này.
+
+### Add to cart trên desktop: URL cart, quantity chung và cookie
+
+Chạy `npm run desktop`, chọn **Add to cart**.
+
+- **ROOT**: nhập URL cart đầy đủ, ví dụ `https://stg2.shop.samsung.com/es/cart` hoặc URL cart country khác.
+- **API**: nhập Commerce API tương ứng country. Không tự thay country của API bạn nhập.
+- **SKU**: một hoặc nhiều mã cách nhau bằng dấu phẩy; mã trùng chỉ thêm một lần.
+- **Quantity**: một số chung áp dụng cho mỗi SKU; đây là lượng cộng thêm. Desktop không còn chế độ quantity riêng.
+- Chỉ báo xanh khi số lượng trong giỏ xác nhận đã tăng đủ. Nếu một phần thất bại, kết quả tổng báo cảnh báo và nêu số SKU thành công; không tự gửi lại.
+- **Xoá cookie & lấy lại**: dùng sau khi tác vụ kết thúc và Chrome của tool còn mở. Xoá cookie trong phiên Chrome đó, chạy getcookie rồi mở lại đúng URL ROOT. Cookie đăng nhập/giỏ phiên cũ cũng bị xoá; giỏ có thể thay đổi theo phiên mới. Không xoá thư mục profile.
+
+Luồng thêm giỏ: getcookie → URL cart đã nhập → API thêm SKU → kiểm tra giỏ → getcookie nếu có mã thành công → mở lại URL cart. Chưa build EXE cho thay đổi này.
+
+Sau khi **Xoá cookie & lấy lại** hoàn tất, desktop hỏi **Thêm lại SKU vào giỏ?**. Chọn **Có** để thêm danh sách SKU và quantity chung đang nhập; chọn **Không** (hoặc Esc) để chỉ giữ trang cart, không gọi API thêm hàng. Nếu reset lỗi sẽ không hỏi và không thêm SKU. Quantity cộng thêm vào giỏ của phiên mới, không khôi phục toàn bộ giỏ cũ.
+
+### Tối ưu hiệu năng desktop
+
+Giao diện khởi động trước; Playwright chỉ được nạp khi bắt đầu tác vụ. Nhật ký được gom theo khung hình, giới hạn 500 dòng và không kéo xuống khi bạn đang đọc log cũ. Add to cart dùng lại tab cart còn mở, không tạo thêm tab sau mỗi lượt. Bỏ độ trễ nhân tạo slowMo; các bước vẫn chờ điều kiện Playwright/API.
+
+Để so sánh tốc độ khởi động, mở bản thư mục `win-unpacked/Samsung Staging Toolkit.exe` (giữ đủ file đi kèm). EXE portable vẫn có bước giải nén runtime khi mở. Source mới chạy bằng `npm run desktop`; cần build lại để EXE có các thay đổi này.
+
+### Trình duyệt trong app
+
+Chạy `npm run desktop`. Add to cart tự mở tab **Trình duyệt** bằng Chromium của Electron, không cần cửa sổ Chrome cho thao tác thêm giỏ. Tab có quay lại, tiến tới, tải lại và đóng trang. Lịch sử mở tab thứ hai trong cùng phiên nhúng. Chuyển menu để quay về cấu hình hoặc nhật ký. Reset cookie dùng phiên nhúng và đưa bạn về form để chọn Có/Không thêm lại SKU.
+
+Phiên nhúng được lưu riêng, không dùng cookie Chrome cũ; cần đăng nhập lại. Checkout hiện vẫn dùng Google Chrome ngoài app, chưa chuyển vào trình duyệt nhúng và không dùng chung đăng nhập với phiên nhúng. Đã kiểm tra luồng cart/reset/lịch sử với HTTPS giả lập; đăng nhập Samsung thực tế và iframe thanh toán chưa được xác minh trong Chromium nhúng. Bản EXE cũ chưa có tính năng này; chưa build mới.
+
+Trong tab **Trình duyệt**, nhấn **+** để mở tab trống. Nhập hoặc sửa thanh URL rồi nhấn **Enter** để truy cập trên tab đang chọn. Có thể bỏ tiền tố `https://`; app tự bổ sung. Chỉ hỗ trợ HTTPS. Việc nhập URL không thay ROOT/API trong form chạy.
+
+### Chọn trình duyệt cho chức năng trong app
+
+Ở đầu app, chọn **Trình duyệt trong app** hoặc **Google Chrome bên ngoài** trước khi chạy. Lựa chọn áp dụng cho Add to cart, checkout/chạy nhiều lượt, lịch sử và reset cookie; được nhớ cho lần mở sau. Khi một lượt đang chạy, bộ chọn bị khoá.
+
+Mỗi loại trình duyệt giữ cookie và đăng nhập riêng; đổi lựa chọn không chuyển cookie. Muốn lịch sử cùng tài khoản với checkout thì chọn cùng loại trình duyệt. Reset cookie tác động lên loại đang chọn và vẫn hỏi Có/Không thêm lại SKU. Nút Dừng đóng các phiên của tool. Mục Trình duyệt với nút +/thanh URL luôn quản lý tab nhúng.
+
+Checkout nhúng được nối với Playwright qua cổng DevTools cục bộ. Đã kiểm tra kết nối, truyền lựa chọn và luồng cart/reset/lịch sử giả lập. Kiểm tra tự động phần checkout thanh toán bị bộ duyệt an toàn chặn do source có bước tự xác nhận/đặt đơn; chưa xác minh checkout thực tế trong trình duyệt nhúng. Chưa build EXE mới cho thay đổi này.

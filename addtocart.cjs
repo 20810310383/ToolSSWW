@@ -12,7 +12,7 @@ if(process.argv.includes('--help')){console.log('node addtocart.cjs\nMenu: 1 SKU
   async function positive(text,fallback=1){while(true){const raw=await ask(text,String(fallback));if(/^\d+$/.test(raw)&&Number.isSafeInteger(Number(raw))&&Number(raw)>0)return Number(raw);ui.warn('Nhập số nguyên dương.');}}
   try{
     ui.title('ADD TO CART');ui.menu([['1','Thêm một SKU'],['2','Thêm nhiều SKU']]);
-    let mode;while(!['1','2'].includes(mode))mode=await ask('Chon 1/2 [1]: ','1');
+    let mode=process.argv.includes('--single')?'1':process.argv.includes('--multi')?'2':undefined;while(!['1','2'].includes(mode))mode=await ask('Chon 1/2 [1]: ','1');
     const count=mode==='1'?1:await positive('So SKU khac nhau [2]: ',2);
     const products=new Map();
     for(let i=0;i<count;i++){
