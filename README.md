@@ -375,3 +375,5 @@ Chay `npm run desktop`: launcher tu loai bien `ELECTRON_RUN_AS_NODE` cho tien tr
 App tach session/cache Chromium sang `%LOCALAPPDATA%/SamsungStagingToolkit/browser-session-v2/<profile-id>`, kiem tra tao/ghi file truoc khi dung. Neu khong ghi duoc se thu thu muc rieng duoi TEMP; duong dan thuc te va ly do fallback nam trong startup.log. Chi mot app cho moi profile duoc mo, lan mo tiep theo dua cua so hien tai len truoc. Khong xoa cache/profile cu hoac doi quyen Windows. Vi phien nhung duoc chuyen sang duong dan moi, can dang nhap lai mot lan; profile Chrome ben ngoai khong bi doi.
 
 Dong cua so app cu (Ctrl+C trong terminal dang chay) truoc khi chay lai source moi bang `npm run desktop`. Khong can chay VSCode voi quyen Administrator.
+
+Neu cua so khong hien sau ban sua cache: thu `npm run desktop:safe` (profile moi, tat cache HTTP va GPU cho lan chay). App nay hien cua so ngay thay vi cho ready-to-show; chi tao trinh duyet nhung khi duoc su dung. Loi khoi dong duoc in ra terminal kem startup.log. Khong xoa profile cu.

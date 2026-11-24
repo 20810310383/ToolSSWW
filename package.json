@@ -13,7 +13,8 @@
     "build:dir": "electron-builder --win --dir --x64",
     "release:rar": "node desktop/release.cjs",
     "cli": "node cli.cjs",
-    "desktop:fresh": "node desktop/launch.cjs --fresh-profile"
+    "desktop:fresh": "node desktop/launch.cjs --fresh-profile",
+    "desktop:safe": "node desktop/launch.cjs --fresh-profile --disable-http-cache --disable-gpu --disable-gpu-compositing"
   },
   "build": {
     "appId": "local.staging.toolkit",
