@@ -1,3 +1,25 @@
+# Chạy giao diện web từ terminal — không cần Electron
+
+Sau khi kéo code mới, chỉ cần chạy:
+
+```powershell
+npm start
+```
+
+Tool tự mở Chrome, nếu không có sẽ thử Edge. Terminal in đường dẫn `http://127.0.0.1:<port>/#...`; nếu tab chưa tự mở, copy nguyên đường dẫn đó vào trình duyệt. Giữ terminal mở; Ctrl+C đóng tool và trình duyệt do tool quản lý. Có thể dùng `npm run web` thay cho `npm start`.
+
+Máy mới cần Node.js 22+, Chrome hoặc Edge và VPN truy cập staging. Cài dependencies một lần bằng `npm ci --omit=dev` (không cần cài Electron cho bản web).
+
+Giao diện web có cấu hình ROOT/API, SKU dấu phẩy, quantity, checkout/chạy nhiều lượt, lịch sử, nhật ký và reset cookie với lựa chọn Có/Không thêm lại SKU. Các tab Samsung được điều khiển bằng Playwright trên Chrome/Edge thật. Mục Trình duyệt có nút +, đổi URL/Enter, quay lại/tiến tới/tải lại và đóng tab. Website Samsung mở ở tab riêng; không nhúng iframe vào dashboard.
+
+Bản web luôn dừng ở bước 3 để bạn kiểm tra và xác nhận điều khoản/đặt hàng trên tab Samsung. Hai dòng click trong runner gốc vẫn được giữ cho luồng hiện có; bản web bật chế độ xác nhận thủ công từ server, không thể tắt bằng form.
+
+Cookie nằm trong `web-profile/` riêng, không chuyển từ Electron; bạn đăng nhập Samsung trong tab website nếu cần. Nút Dừng trong giao diện đóng tab tác vụ nhưng giữ dashboard; Ctrl+C kết thúc toàn bộ. Server chỉ nghe localhost và dùng mã phiên riêng cho API, không đưa lên mạng LAN. Không gửi link chứa mã phiên cho người khác. Không cần MongoDB.
+
+Đã kiểm tra giao diện web và runner cart bằng API giả lập: thêm nhiều SKU, lỗi hết stock, reset Có/Không, lịch sử/tab, xác nhận thủ công và bảo vệ API local. Chưa xác minh checkout/login/thanh toán thực tế trên staging.
+
+---
+
 # Hướng dẫn chạy Samsung staging bằng Node.js
 
 ## Chạy nhanh khi terminal đang ở trong `samsung-cart-check`

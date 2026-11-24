@@ -85,8 +85,10 @@ class Runner {
                 }
                 // Only scroll/focus; final consent and purchase remain manual.
                 const confirmation = p.locator('#es-adyenCcPaymentModeOptin-input');
+                if(config.manualConfirmation!==true){
                 await p.locator('#es-adyenCcPaymentModeOptin-input').click();
                 await p.locator('button[data-an-la="payment:pay now:credit card"]').click();
+                }
                 if (await confirmation.isVisible()) { await confirmation.scrollIntoViewIfNeeded(); await confirmation.focus(); }
                 this.emit({ type: 'round', round: round + 1, total: cases.length, items, status: 'waiting' }); this.log('Sẵn sàng bước 3. Bạn kiểm tra tổng tiền, xác nhận điều khoản và đặt hàng trong Chrome.', 'success');
                 await p.waitForURL(u => u.origin === config.root && u.pathname.startsWith('/es/orderConfirmation'), { timeout: 1800000 }); const u = new URL(p.url()); const code = u.searchParams.get('orderCode') || /orderCode=([^;?&#/]+)/.exec(u.pathname)?.[1]; if (!code) throw Error('Chưa có mã đơn trên trang xác nhận');
