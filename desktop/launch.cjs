@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),os=require('node:os');
 function launchOptions(args=process.argv.slice(2),environment=process.env){
  const env={...environment};delete env.ELECTRON_RUN_AS_NODE;
  const fresh=args.includes('--fresh-profile');
- const electronArgs=[path.resolve(__dirname,'..'),...args.filter(a=>a!=='--fresh-profile')];
+ const probe=args.includes('--probe');const electronArgs=[probe?path.join(__dirname,'probe.cjs'):path.resolve(__dirname,'..'),...args.filter(a=>!['--fresh-profile','--probe'].includes(a))];
  let profile=null;
  if(fresh){profile=fs.mkdtempSync(path.join(os.tmpdir(),'samsung-desktop-fresh-'));electronArgs.push('--user-data-dir='+profile);}
  return {env,args:electronArgs,profile};

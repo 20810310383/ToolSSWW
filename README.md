@@ -381,3 +381,7 @@ Neu cua so khong hien sau ban sua cache: thu `npm run desktop:safe` (profile moi
 ### Renderer launch-failed (18) tren Windows
 
 Day la loi tien trinh renderer khong khoi chay, khong du de ket luan do cache. Dong app, thu `npm run desktop:doctor` de xem quyen runtime va trang thai Administrator. Neu quyen sandbox doc runtime bi thieu, chay `npm run desktop:repair-runtime`: chi grant Read/Execute cho SID ALL APPLICATION PACKAGES tren `node_modules/electron/dist`, khong tat sandbox, khong doi quyen toan o dia. Sau do chay `npm run desktop:safe`. Neu van loi, chay `npm run desktop:diagnose` va gui output terminal; co the la chinh sach may/phan mem bao ve, can xac minh them.
+
+### Khoanh vung launch-failed (18) sau khi sua ACL
+
+Chay `npm run desktop:probe`: mo trang HTML toi gian bang Electron, van giu sandbox, dung profile moi, khong nap source Samsung va khong truy cap mang. Trang tu dong dong sau khi kiem tra. Neu probe cung FAIL launch-failed thi loi nam o runtime/Windows, khong phai form hay API Samsung. Neu probe PASS nhung desktop loi, can log `npm run desktop:diagnose`. Code 18 chua chi ra mot nguyen nhan duy nhat; khong tiep tuc grant quyen rong hon hay tat sandbox/phan mem bao ve.
