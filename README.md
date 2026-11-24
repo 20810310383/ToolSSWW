@@ -369,3 +369,9 @@ Quy trinh release tao ban sao source tam de checkout dung o buoc 3; giu nguyen h
 ### Desktop man hinh den khi chay npm
 
 Chay `npm run desktop`: launcher tu loai bien `ELECTRON_RUN_AS_NODE` cho tien trinh app, khong thay bien he thong. Neu van den, dong cua so app roi thu `npm run desktop:fresh`. Lenh nay dung profile kiem tra moi, khong xoa profile/cookie cu; can dang nhap lai trong phien kiem tra. Neu profile moi hien UI con profile cu khong hien, can kiem tra cache/session cua profile cu, khong ket luan la thieu chu ky. Neu ca hai deu den, gui noi dung startup.log va loi terminal de khoanh vung.
+
+### Access denied khi tao cache / GPU Cache Creation failed
+
+App tach session/cache Chromium sang `%LOCALAPPDATA%/SamsungStagingToolkit/browser-session-v2/<profile-id>`, kiem tra tao/ghi file truoc khi dung. Neu khong ghi duoc se thu thu muc rieng duoi TEMP; duong dan thuc te va ly do fallback nam trong startup.log. Chi mot app cho moi profile duoc mo, lan mo tiep theo dua cua so hien tai len truoc. Khong xoa cache/profile cu hoac doi quyen Windows. Vi phien nhung duoc chuyen sang duong dan moi, can dang nhap lai mot lan; profile Chrome ben ngoai khong bi doi.
+
+Dong cua so app cu (Ctrl+C trong terminal dang chay) truoc khi chay lai source moi bang `npm run desktop`. Khong can chay VSCode voi quyen Administrator.

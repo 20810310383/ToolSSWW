@@ -8,7 +8,13 @@ process.on('uncaughtException',startupFailure);process.on('unhandledRejection',s
 const debugPort=require('node:crypto').randomInt(42000,62000);
 app.commandLine.appendSwitch('remote-debugging-address','127.0.0.1');app.commandLine.appendSwitch('remote-debugging-port',String(debugPort));
 let win,runner,embeddedRunner,embedded;
-app.whenReady().then(()=>{
+const primaryInstance=app.requestSingleInstanceLock();
+if(!primaryInstance)app.quit();
+else{
+ try{const storage=require('./storage.cjs').configureBrowserStorage(app);diagnostic('Session/cache directory: '+storage.directory);for(const failed of storage.failures)diagnostic('Cache fallback: '+failed.code+' '+failed.directory);}catch(error){startupFailure(error);app.quit();}
+ app.on('second-instance',()=>{if(win&&!win.isDestroyed()){if(win.isMinimized())win.restore();win.show();win.focus();}});
+}
+if(primaryInstance)app.whenReady().then(()=>{
  win=new BrowserWindow({show:false,width:1220,height:850,minWidth:960,minHeight:720,backgroundColor:'#0b1020',title:'Samsung Staging Toolkit',webPreferences:{preload:path.join(__dirname,'preload.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true}});
  diagnostic('Starting version '+app.getVersion()+' on '+process.platform+' '+process.arch+'; software rendering.');
  win.once('ready-to-show',()=>win.show());
