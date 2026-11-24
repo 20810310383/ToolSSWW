@@ -1,0 +1,1 @@
+﻿const fs=require('fs');let s=fs.readFileSync('desktop/renderer.js','utf8');s=s.replace("event.status==='waiting'?'CHỜ XÁC NHẬN':'ĐANG XỬ LÝ'","event.status==='skipped'?'BỎ QUA · KHÔNG CÓ HÀNG':event.status==='waiting'?'CHỜ XÁC NHẬN':'ĐANG XỬ LÝ'");fs.writeFileSync('desktop/renderer.js',s);

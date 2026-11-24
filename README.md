@@ -355,3 +355,7 @@ Trong tab **Trình duyệt**, nhấn **+** để mở tab trống. Nhập hoặc
 Mỗi loại trình duyệt giữ cookie và đăng nhập riêng; đổi lựa chọn không chuyển cookie. Muốn lịch sử cùng tài khoản với checkout thì chọn cùng loại trình duyệt. Reset cookie tác động lên loại đang chọn và vẫn hỏi Có/Không thêm lại SKU. Nút Dừng đóng các phiên của tool. Mục Trình duyệt với nút +/thanh URL luôn quản lý tab nhúng.
 
 Checkout nhúng được nối với Playwright qua cổng DevTools cục bộ. Đã kiểm tra kết nối, truyền lựa chọn và luồng cart/reset/lịch sử giả lập. Kiểm tra tự động phần checkout thanh toán bị bộ duyệt an toàn chặn do source có bước tự xác nhận/đặt đơn; chưa xác minh checkout thực tế trong trình duyệt nhúng. Chưa build EXE mới cho thay đổi này.
+
+### Checkout khi có SKU hết hàng
+
+Trong luồng thêm giỏ + checkout, lỗi `noStock`/`InsufficientStockError` được ghi cảnh báo rồi tiếp tục SKU tiếp theo. Tool đọc lại giỏ, checkout với SKU và quantity thực sự có trong giỏ (nếu chỉ thêm được một phần quantity sẽ báo cảnh báo). Nếu không có SKU nào, lượt đó bị bỏ qua; không mở checkout. Lỗi khác như đăng nhập, mạng hoặc API không xác định vẫn dừng để tránh dùng giỏ chưa rõ trạng thái. Kết quả từng lượt hiển thị danh sách đã xác nhận.
