@@ -56,17 +56,17 @@ class Runner {
                 this.emit({ type: 'cartResult', outcomes, items: (after.entries || []).map(e => ({ code: e.product?.code, quantity: e.quantity })), total: after.totalPrice?.formattedValue });
                 if (outcomes.some(item => item.ok)) { this.log('Lấy lại cookie trước khi mở giỏ hàng…'); await p.goto('https://stg3.shop.samsung.com/getcookie.html', { waitUntil: 'domcontentloaded' }); } await p.goto(config.cartUrl, { waitUntil: 'domcontentloaded' }); await p.bringToFront(); const passed = outcomes.filter(x => x.ok).length; this.log('Kết quả: ' + passed + '/' + outcomes.length + ' SKU đã xác nhận thêm đủ vào giỏ.', passed === outcomes.length ? 'success' : passed ? 'warn' : 'error'); return;
             }
-            let checkoutStarted=false;
+            let checkoutStarted = false;
             for (let round = 0; round < cases.length; round++) {
                 let items = cases[round]; this.emit({ type: 'round', round: round + 1, total: cases.length, items, status: 'running' }); this.log('Lượt ' + (round + 1) + '/' + cases.length + ' · ' + items.map(x => x.code + ' × ' + x.quantity).join(' | '));
                 await p.goto(config.root + '/es/cart', { waitUntil: 'domcontentloaded' });
                 let cart = await api(CART + '?fields=FULL'); if (round > 0 && cart.entries?.length) throw Error('Giỏ lượt trước chưa trống.');
-                const prepared=await prepareCheckoutCart({api,cart,items,log:(message,level)=>this.log(message,level),cancelled:()=>this.cancelled});
-                items=prepared.items;
-                if(!items.length){this.emit({type:'round',round:round+1,total:cases.length,items:[],status:'skipped'});this.log('Lượt '+(round+1)+' · không có SKU nào trong giỏ; bỏ qua checkout.','warn');continue;}
-                checkoutStarted=true;
-                this.emit({type:'round',round:round+1,total:cases.length,items,status:'running'});
-                check(prepared.cart,items);await p.reload({waitUntil:'domcontentloaded'});
+                const prepared = await prepareCheckoutCart({ api, cart, items, log: (message, level) => this.log(message, level), cancelled: () => this.cancelled });
+                items = prepared.items;
+                if (!items.length) { this.emit({ type: 'round', round: round + 1, total: cases.length, items: [], status: 'skipped' }); this.log('Lượt ' + (round + 1) + ' · không có SKU nào trong giỏ; bỏ qua checkout.', 'warn'); continue; }
+                checkoutStarted = true;
+                this.emit({ type: 'round', round: round + 1, total: cases.length, items, status: 'running' });
+                check(prepared.cart, items); await p.reload({ waitUntil: 'domcontentloaded' });
                 if (config.mode === 'cart') { this.log('Giỏ đã sẵn sàng. Đóng Chrome hoặc bấm Dừng khi xong.', 'success'); await new Promise(r => c.once('close', r)); return; }
                 this.log('Mở Tramitar pedido…'); await p.getByRole('button', { name: /Tramitar pedido/i }).first().click(); await p.waitForURL(/\/es\/(guestlogin\/checkout|checkout\/one)/);
                 if (p.url().includes('/guestlogin/checkout')) { this.log('Đăng nhập Samsung trong Chrome. App chờ tối đa 10 phút.', 'warn'); await p.getByText(/Iniciar sesi/i).first().click(); await p.waitForURL(u => u.origin === config.root && u.pathname.includes('/checkout/one'), { timeout: 600000 }); }
@@ -85,17 +85,17 @@ class Runner {
                 }
                 // Only scroll/focus; final consent and purchase remain manual.
                 const confirmation = p.locator('#es-adyenCcPaymentModeOptin-input');
-                if(config.manualConfirmation!==true){
+                // if(config.manualConfirmation!==true){
+                // }
                 await p.locator('#es-adyenCcPaymentModeOptin-input').click();
                 await p.locator('button[data-an-la="payment:pay now:credit card"]').click();
-                }
                 if (await confirmation.isVisible()) { await confirmation.scrollIntoViewIfNeeded(); await confirmation.focus(); }
                 this.emit({ type: 'round', round: round + 1, total: cases.length, items, status: 'waiting' }); this.log('Sẵn sàng bước 3. Bạn kiểm tra tổng tiền, xác nhận điều khoản và đặt hàng trong Chrome.', 'success');
                 await p.waitForURL(u => u.origin === config.root && u.pathname.startsWith('/es/orderConfirmation'), { timeout: 1800000 }); const u = new URL(p.url()); const code = u.searchParams.get('orderCode') || /orderCode=([^;?&#/]+)/.exec(u.pathname)?.[1]; if (!code) throw Error('Chưa có mã đơn trên trang xác nhận');
                 await p.goto(config.root + '/es/cart', { waitUntil: 'domcontentloaded' }); if ((await api(CART + '?fields=FULL')).entries?.length) throw Error('Có mã đơn nhưng giỏ chưa trống');
                 this.emit({ type: 'complete', round: round + 1, items, orderCode: decodeURIComponent(code) }); this.log('Lượt ' + (round + 1) + ' · mã đơn ' + code + ' · giỏ trống', 'success');
             }
-            if(!checkoutStarted){this.log('Không có lượt nào đủ hàng để checkout.','warn');return;}
+            if (!checkoutStarted) { this.log('Không có lượt nào đủ hàng để checkout.', 'warn'); return; }
             this.log('Hoàn tất. Đóng Chrome hoặc bấm Dừng để kết thúc phiên.', 'success'); await new Promise(r => c.once('close', r));
         } catch (e) { if (!this.cancelled) this.log(e.message, 'error'); } finally { this.active = false; this.emit({ type: 'idle' }); }
     }
